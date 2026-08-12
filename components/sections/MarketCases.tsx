@@ -2,6 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
+import { VideoTile } from "@/components/motion/VideoTile";
+import { MARKET_CASE_VIDEOS } from "@/lib/marketCaseVideos";
 
 export function MarketCases() {
   const t = useTranslations("marketCases");
@@ -27,8 +29,10 @@ export function MarketCases() {
                 i > 0 ? "sm:border-l sm:border-line" : ""
               }`}
             >
-              {/* real product/case photography goes here — placeholder for now */}
-              <div className="mx-auto mb-7 aspect-square w-full max-w-[240px] border border-line bg-paper" />
+              <VideoTile
+                src={MARKET_CASE_VIDEOS[item.name]}
+                className="mx-auto mb-7 aspect-square w-full max-w-[240px] border border-line"
+              />
               <p className="mx-auto max-w-[390px] font-serif text-lg leading-tight">
                 <span className="text-rose">{item.name}</span> — {item.text}
               </p>
