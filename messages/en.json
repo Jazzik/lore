@@ -70,6 +70,13 @@
       { "title": "Finance", "lines": ["Payment collection", "Sales accounting", "Creator payout share", "Payouts"] }
     ]
   },
+  "production": {
+    "eyebrow": "How it works",
+    "titleLines": ["from blueprint"],
+    "titleAccent": "to doorstep",
+    "body": "We handle the entire path of the product — from development to delivery.",
+    "items": ["Development", "Manufacturing", "Packaging", "Quality control", "Delivery"]
+  },
   "productDiscovery": {
     "titleLines": ["don't know"],
     "titleAccent": "what to sell?",

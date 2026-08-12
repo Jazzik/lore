@@ -6,6 +6,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Positioning } from "@/components/sections/Positioning";
 import { Differentiation } from "@/components/sections/Differentiation";
 import { Services } from "@/components/sections/Services";
+import { Production } from "@/components/sections/Production";
 import { ProductDiscovery } from "@/components/sections/ProductDiscovery";
 import { Benefits } from "@/components/sections/Benefits";
 import { FinancialModel } from "@/components/sections/FinancialModel";
@@ -35,6 +36,7 @@ export default async function Home({
         <Positioning />
         <Differentiation />
         <Services />
+        <Production />
         <ProductDiscovery />
         <Benefits />
         <FinancialModel />
