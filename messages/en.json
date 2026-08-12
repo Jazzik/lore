@@ -101,6 +101,13 @@
       { "num": "06", "title": "Extra revenue stream", "body": "Not solely dependent on ad integrations." }
     ]
   },
+  "showcase": {
+    "eyebrow": "Product showcase",
+    "titleLines": ["what we"],
+    "titleAccent": "can build",
+    "body": "From hoodies to tumblers — any merch format that fits the creator's brand.",
+    "items": ["Hoodie", "Cap", "Tumbler", "Tote bag", "Poster", "Pin set", "Candle"]
+  },
   "financialModel": {
     "kicker": "financial",
     "title": "model",

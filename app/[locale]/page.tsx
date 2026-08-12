@@ -9,6 +9,7 @@ import { Services } from "@/components/sections/Services";
 import { Production } from "@/components/sections/Production";
 import { ProductDiscovery } from "@/components/sections/ProductDiscovery";
 import { Benefits } from "@/components/sections/Benefits";
+import { Showcase } from "@/components/sections/Showcase";
 import { FinancialModel } from "@/components/sections/FinancialModel";
 import { MarketCases } from "@/components/sections/MarketCases";
 import { Contact } from "@/components/sections/Contact";
@@ -39,6 +40,7 @@ export default async function Home({
         <Production />
         <ProductDiscovery />
         <Benefits />
+        <Showcase />
         <FinancialModel />
         <MarketCases />
         <Contact />
