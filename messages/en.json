@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "LORE — physical product studio for creators",
+    "description": "LORE designs and launches physical products for creators and bloggers — fully turnkey, from idea to delivery."
+  },
+  "nav": {
+    "cta": "Start a project"
+  },
+  "progress": {
+    "label": "Section navigation"
+  },
+  "hero": {
+    "eyebrow": "Product studio for creators",
+    "wordmark": "LORE",
+    "taglineLines": ["turning", "attention", "into"],
+    "taglineAccent": "income",
+    "body": "We design and launch physical products for creators and bloggers — completely turnkey.",
+    "cta": "Start a project"
+  },
+  "positioning": {
+    "eyebrow": "A new way",
+    "titleLines": ["a new way to", "monetize"],
+    "titleAccent": "popularity",
+    "body": "We build a product that naturally extends the creator's brand — one their audience actually wants to buy.",
+    "note": "(for anyone tired of logo t-shirts in commercial proposals)"
+  },
+  "differentiation": {
+    "title": "The key difference",
+    "regular": {
+      "kicker": "A regular merch manufacturer",
+      "note": "And that's if you already show up with a finished brief",
+      "does": ["makes the product", "packs it", "ships you the boxes"],
+      "restNote": "Everything after that is on you:",
+      "rest": [
+        "build a storefront",
+        "connect payments",
+        "process orders",
+        "store inventory",
+        "answer customers 24/7",
+        "arrange delivery",
+        "handle returns",
+        "track stock"
+      ]
+    },
+    "us": {
+      "kicker": "Us",
+      "note": "You can come to us without even a finished idea.",
+      "pipeline": [
+        "ideate",
+        "design",
+        "produce",
+        "launch",
+        "support customers",
+        "sell",
+        "deliver"
+      ],
+      "statementLines": ["you don't need to build", "another business inside"],
+      "statementAccent": "your business"
+    }
+  },
+  "services": {
+    "titleLines": ["what we"],
+    "titleAccent": "take on",
+    "body": "We take on everything. From idea to delivery. You're at the center of the brand, we're behind the curtain.",
+    "items": [
+      { "title": "Product", "lines": ["Product idea", "Concept", "Design", "Packaging"] },
+      { "title": "Production", "lines": ["Sourcing a manufacturer", "Raw material purchase", "Production", "Quality control"] },
+      { "title": "Commerce", "lines": ["Landing page", "SEO", "Direct", "Payment infrastructure", "Order system"] },
+      { "title": "Logistics", "lines": ["Storage", "Fulfillment", "Packaging", "Delivery", "Order processing"] },
+      { "title": "Finance", "lines": ["Payment collection", "Sales accounting", "Creator payout share", "Payouts"] }
+    ]
+  },
+  "productDiscovery": {
+    "titleLines": ["don't know"],
+    "titleAccent": "what to sell?",
+    "quote": "You don't need to come to us with a ready idea. “I want to monetize my audience, but I don't know how.”",
+    "quoteAccent": "I don't know how",
+    "analysisSteps": [
+      "who your audience is",
+      "what they're interested in",
+      "what they'll pay for",
+      "what product fits your brand"
+    ],
+    "bottomLines": ["we'll figure out"],
+    "bottomAccent": "what you should actually be selling"
+  },
+  "benefits": {
+    "items": [
+      { "num": "01", "title": "Audience monetization", "body": "Income beyond ad deals alone." },
+      { "num": "02", "title": "A new product", "body": "A creator's own physical asset." },
+      { "num": "03", "title": "Stronger brand", "body": "The creator stops being just a media channel." },
+      { "num": "04", "title": "A talking point", "body": "The launch itself becomes content." },
+      { "num": "05", "title": "Loyalty", "body": "Fans can literally buy a piece of the creator's world." },
+      { "num": "06", "title": "Extra revenue stream", "body": "Not solely dependent on ad integrations." }
+    ]
+  },
+  "financialModel": {
+    "kicker": "financial",
+    "title": "model",
+    "columns": [
+      { "num": "01", "title": "%", "body": "You put in no money upfront. We fund production and launch, you earn a percentage of every order." },
+      { "num": "02", "title": "Pre-order", "body": "Sales first, production after. We collect pre-orders from your audience; production starts once the volume is paid." },
+      { "num": "03", "title": "Author invests", "body": "You fund the product and keep the revenue. We handle production, logistics and services for a fixed fee." }
+    ]
+  },
+  "marketCases": {
+    "eyebrow": "Objects that built brands",
+    "cases": [
+      { "name": "Rhode", "text": "A year of organic audience warm-up before launch built pent-up demand — the brand now earns over $212M a year." },
+      { "name": "Chamberlain Coffee", "text": "A personal habit turned into a full FMCG product, on shelves at major US retailers and earning $22M a year." },
+      { "name": "Skims", "text": "Reinventing the shapewear market through size inclusivity and viral marketing — and, of course, a personal brand." }
+    ]
+  },
+  "contact": {
+    "titleLines": ["let's create"],
+    "titleAccent": "something together",
+    "eyebrow": "Start a conversation",
+    "formTitle": "Find out which merch takes you to market",
+    "tabs": { "whatsapp": "WhatsApp", "telegram": "Telegram", "email": "Email" },
+    "note": "Pick whichever way of reaching us is easiest — the form adapts to it.",
+    "fields": { "name": "Name", "contact": "Contact info", "message": "A little about you" },
+    "submit": "Send",
+    "footerLabel": "Contacts"
+  },
+  "floatingCapture": {
+    "eyebrow": "Your logo object",
+    "titleLines": ["imagine this being"],
+    "titleAccent": "your next product",
+    "placeholder": "@yourtelegram",
+    "submit": "Let's talk →",
+    "sent": "Got it. We'll find the product that fits your audience."
+  },
+  "liveCounter": {
+    "label": "objects in development right now"
+  },
+  "scrollBack": {
+    "line1": "scrolling back?",
+    "line2": "there's something",
+    "line3": "here too"
+  }
+}
