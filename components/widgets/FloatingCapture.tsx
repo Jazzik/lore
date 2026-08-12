@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { useUIStore } from "@/store/ui";
+import { ROTATING_CAPTURE_IMAGES } from "@/lib/rotatingCaptureImages";
 
 export function FloatingCapture() {
   const t = useTranslations("floatingCapture");
@@ -12,8 +14,17 @@ export function FloatingCapture() {
   const dismissed = useUIStore((state) => state.floatingWidgetDismissed);
   const dismiss = useUIStore((state) => state.dismissFloatingWidget);
   const [sent, setSent] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
 
   const visible = activeSlide > 0 && activeSlide < 8 && !dismissed;
+
+  useEffect(() => {
+    if (!visible) return;
+    const id = setInterval(() => {
+      setImageIndex((i) => (i + 1) % ROTATING_CAPTURE_IMAGES.length);
+    }, 3200);
+    return () => clearInterval(id);
+  }, [visible]);
 
   return (
     <AnimatePresence>
@@ -27,12 +38,30 @@ export function FloatingCapture() {
           aria-label="Create your next product"
         >
           <div className="relative rounded-sm border border-line bg-paper/95 p-6 pb-5 pl-24 shadow-2xl shadow-black/40 backdrop-blur-md">
-            {/* real product photography swaps in here later */}
             <div
-              className="absolute -left-2 bottom-4 h-[110px] w-[110px] rounded-md bg-gradient-to-br from-[#2a241e] to-[#3a3128] shadow-lg shadow-black/40"
+              className="absolute -left-4 bottom-4 h-[110px] w-[110px]"
               style={{ animation: "floatObject 4.8s ease-in-out infinite" }}
               aria-hidden
-            />
+            >
+              <AnimatePresence mode="sync">
+                <motion.div
+                  key={imageIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={ROTATING_CAPTURE_IMAGES[imageIndex]}
+                    alt=""
+                    fill
+                    sizes="110px"
+                    className="object-contain drop-shadow-lg"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
             <button
               type="button"
               onClick={dismiss}

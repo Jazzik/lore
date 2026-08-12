@@ -1,0 +1,19 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=$(jq -r '.tool_input.file_path // empty'); case \"$file\" in *.ts|*.tsx) pnpm exec eslint --max-warnings=0 \"$file\" ;; esac"
+          },
+          {
+            "type": "command",
+            "command": "file=$(jq -r '.tool_input.file_path // empty'); case \"$file\" in */messages/ru.json|*/messages/en.json) node .claude/skills/i18n-parity-check/check-parity.js ;; esac"
+          }
+        ]
+      }
+    ]
+  }
+}
