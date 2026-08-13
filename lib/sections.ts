@@ -13,6 +13,7 @@ export const SLIDE_IDS = [
   "calculator",
   "market-cases",
   "cases",
+  "about",
   "faq",
   "contact",
 ] as const;

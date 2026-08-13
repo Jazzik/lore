@@ -16,6 +16,7 @@ import { FinancialModel } from "@/components/sections/FinancialModel";
 import { Calculator } from "@/components/sections/Calculator";
 import { MarketCases } from "@/components/sections/MarketCases";
 import { Cases } from "@/components/sections/Cases";
+import { About } from "@/components/sections/About";
 import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
 import { FloatingCapture } from "@/components/widgets/FloatingCapture";
@@ -52,6 +53,7 @@ export default async function Home({
         <Calculator />
         <MarketCases />
         <Cases />
+        <About />
         <Faq />
         <Contact />
       </main>

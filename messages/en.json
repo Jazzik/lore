@@ -23,6 +23,7 @@
       "calculator": "Calculator",
       "market-cases": "Cases",
       "cases": "Our cases",
+      "about": "About",
       "faq": "FAQ",
       "contact": "Contact"
     }
@@ -270,6 +271,22 @@
     "leadTimeWeeks": "{n, plural, one {# week} other {# weeks}}",
     "compact": { "millions": "{v}M", "thousands": "{v}K", "plain": "{v}" },
     "money": { "millions": "₽{v}M", "thousands": "₽{v}K", "plain": "₽{v}" }
+  },
+  "about": {
+    "eyebrow": "Who's behind LORE",
+    "titleLine": "not an agency —",
+    "titleAccent": "a team with factories",
+    "stats": [
+      { "value": 42, "label": "projects launched since 2019" },
+      { "value": 61000, "label": "units produced" },
+      { "value": 6, "label": "factory partners" },
+      { "value": 7, "label": "years in production" }
+    ],
+    "team": {
+      "body": "We've been at this since 2019. A founder and producer, a production technologist, and an art director carry every project from idea to shipment themselves — nothing gets handed off between departments. Runs are printed through factory partners we've worked with for years: not a one-off vendor, but a team that already knows how to make your category.",
+      "roles": ["Founder and producer", "Production technologist", "Art director"]
+    },
+    "fineprint": "Production is based out of Moscow."
   },
   "faq": {
     "eyebrow": "Before you reach out",
