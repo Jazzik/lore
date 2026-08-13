@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
+import { FloatingProductCluster } from "@/components/widgets/FloatingProductCluster";
 
 export function Positioning() {
   const t = useTranslations("positioning");
@@ -33,15 +33,7 @@ export function Positioning() {
           </div>
         </Reveal>
         <Reveal delay={0.15}>
-          <div className="relative aspect-square w-full overflow-hidden rounded-[28px] shadow-2xl shadow-black/40">
-            <Image
-              src="/non-png/5d518e9bbd3153cc8066c235c03c340c8234b2f50431ad54582567747652435b.png"
-              alt=""
-              fill
-              unoptimized
-              className="object-cover"
-            />
-          </div>
+          <FloatingProductCluster />
         </Reveal>
       </div>
     </section>
