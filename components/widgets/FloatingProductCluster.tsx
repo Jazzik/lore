@@ -16,12 +16,12 @@ type TileConfig = {
 const CENTER = "50%";
 
 const TILES: TileConfig[] = [
-  { left: "20%", top: "16%", rotate: -7, size: 148, floatDelay: 0 },
-  { left: "80%", top: "12%", rotate: 5, size: 128, floatDelay: 0.5 },
-  { left: "10%", top: "58%", rotate: 4, size: 168, floatDelay: 1 },
-  { left: "84%", top: "62%", rotate: -5, size: 138, floatDelay: 1.5 },
-  { left: "48%", top: "86%", rotate: 7, size: 118, floatDelay: 2 },
-  { left: "50%", top: "40%", rotate: -3, size: 108, floatDelay: 2.5 },
+  { left: "22%", top: "18%", rotate: -7, size: 210, floatDelay: 0 },
+  { left: "78%", top: "14%", rotate: 5, size: 185, floatDelay: 0.5 },
+  { left: "14%", top: "58%", rotate: 4, size: 235, floatDelay: 1 },
+  { left: "80%", top: "62%", rotate: -5, size: 195, floatDelay: 1.5 },
+  { left: "48%", top: "86%", rotate: 7, size: 170, floatDelay: 2 },
+  { left: "50%", top: "40%", rotate: -3, size: 155, floatDelay: 2.5 },
 ];
 
 function Tile({
@@ -51,8 +51,8 @@ function Tile({
         scale,
         rotate: rotateZ,
         opacity,
-        width: size,
-        height: size,
+        width: `clamp(${Math.round(size * 0.5)}px, 30vw, ${size}px)`,
+        height: `clamp(${Math.round(size * 0.5)}px, 30vw, ${size}px)`,
       }}
     >
       <div
@@ -80,7 +80,7 @@ export function FloatingProductCluster() {
   });
 
   return (
-    <div ref={ref} className="relative min-h-[420px] w-full" aria-hidden>
+    <div ref={ref} className="relative min-h-[540px] w-full" aria-hidden>
       {FLOATING_IMAGES.map((src, i) => (
         <Tile key={src} src={src} config={TILES[i]} progress={scrollYProgress} />
       ))}
