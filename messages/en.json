@@ -17,6 +17,7 @@
       "production": "Production",
       "quality": "Quality",
       "journey": "Product journey",
+    "launch": "Launch",
       "product-discovery": "Product discovery",
       "benefits": "Benefits",
       "financial-model": "Financial model",
@@ -159,6 +160,46 @@
       }
     ]
   },
+  "launch": {
+    "eyebrow": "Launch",
+    "titleLines": ["a quiet launch", "sells nothing"],
+    "titleAccent": "a drop needs a script",
+    "body": "A storefront is not sales. Sales start weeks before the buy button and do not end at delivery. A merch builder hands you a shop link and walks away. We run the whole performance.",
+    "authorLabel": "You",
+    "loreLabel": "Us",
+    "phases": [
+      {
+        "num": "01",
+        "when": "while production runs",
+        "title": "Warm-up",
+        "author": "You show the process: sketches, first samples, the material you picked, the versions you rejected. Your audience takes part in the decisions and waits for the result.",
+        "lore": "We shoot the product, build a content plan around the date and put the waitlist page live."
+      },
+      {
+        "num": "02",
+        "when": "announcement day",
+        "title": "Announcement and pre-orders",
+        "author": "You name the date and open pre-orders — one post you have been building towards for weeks.",
+        "lore": "We take payments, measure real demand and set the production run from actual orders instead of a guess."
+      },
+      {
+        "num": "03",
+        "when": "the sales window",
+        "title": "Selling",
+        "author": "You stay in daily contact: how much is left, answers in stories, rising urgency as the window closes.",
+        "lore": "We watch stock, pick and ship every order, and answer buyers so you do not have to."
+      },
+      {
+        "num": "04",
+        "when": "after delivery",
+        "title": "Second round",
+        "author": "You collect your buyers' unboxings — they become the advertising for the next drop.",
+        "lore": "We handle returns and exchanges, pull the sales data together and propose what the second release should be."
+      }
+    ],
+    "statement": "A storefront without a warm-up is a warehouse",
+    "statementAccent": "nobody knows about"
+  },
   "productDiscovery": {
     "titleLines": ["don't know"],
     "titleAccent": "what to sell?",
@@ -172,6 +213,63 @@
     ],
     "bottomLines": ["we'll figure out"],
     "bottomAccent": "what you should actually be selling"
+  },
+  "quiz": {
+    "progress": "Step {current} of {total}",
+    "back": "Back",
+    "resultKicker": "Done",
+    "resultTitle": "That's already enough to start",
+    "resultBody": "Leave a contact and we'll come back with two or three concrete product ideas for your audience, with the economics worked out for each.",
+    "steps": {
+      "niche": {
+        "question": "What is your channel about?",
+        "short": "Niche",
+        "options": {
+          "beauty": "Beauty and skincare",
+          "lifestyle": "Lifestyle and fashion",
+          "gaming": "Gaming and tech",
+          "education": "Education and expertise",
+          "other": "Something else"
+        }
+      },
+      "audience": {
+        "question": "How many followers do you have?",
+        "short": "Audience",
+        "options": {
+          "lt50k": "Under 50 thousand",
+          "50k-200k": "50–200 thousand",
+          "200k-1m": "200 thousand — 1 million",
+          "gt1m": "Over a million"
+        }
+      },
+      "engagement": {
+        "question": "How does your audience react to your recommendations?",
+        "short": "Engagement",
+        "options": {
+          "low": "They watch, but rarely buy",
+          "medium": "They buy what I recommend",
+          "high": "They clear out everything I show"
+        }
+      },
+      "budget": {
+        "question": "Are you ready to invest money up front?",
+        "short": "Budget",
+        "options": {
+          "none": "No — I want a share with no investment",
+          "some": "I can cover part of it",
+          "ready": "I'm ready to fund the run myself"
+        }
+      }
+    },
+    "form": {
+      "contactLabel": "Telegram or email",
+      "submit": "Get product ideas",
+      "submitting": "Sending…",
+      "success": "Got it. We'll come back with ideas within a day.",
+      "error": "Didn't go through. Try again or message us on Telegram.",
+      "errorRateLimited": "Too many requests in a row. Try again in a minute.",
+      "errorContact": "Leave a Telegram handle or email"
+    }
   },
   "benefits": {
     "items": [
