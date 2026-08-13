@@ -1,11 +1,12 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
 import { CASE_STUDIES } from "@/lib/caseStudies";
 
 export function Cases() {
   const t = useTranslations("cases");
+  const format = useFormatter();
   const items = t.raw("items") as { id: string; num: string; name: string; text: string }[];
 
   return (
@@ -42,25 +43,37 @@ export function Cases() {
                     <dt className="text-[10px] uppercase tracking-[0.16em] text-muted-ink">
                       {t("labels.audience")}
                     </dt>
-                    <dd className="mt-1 font-serif text-lg">{data.audience}</dd>
+                    <dd className="mt-1 font-serif text-lg">
+                      {format.number(data.audience, { notation: "compact" })}
+                    </dd>
                   </div>
                   <div>
                     <dt className="text-[10px] uppercase tracking-[0.16em] text-muted-ink">
                       {t("labels.units")}
                     </dt>
-                    <dd className="mt-1 font-serif text-lg">{data.units}</dd>
+                    <dd className="mt-1 font-serif text-lg">{format.number(data.units)}</dd>
                   </div>
                   <div>
                     <dt className="text-[10px] uppercase tracking-[0.16em] text-muted-ink">
                       {t("labels.leadTime")}
                     </dt>
-                    <dd className="mt-1 font-serif text-lg">{data.leadTime}</dd>
+                    <dd className="mt-1 font-serif text-lg">
+                      {t("leadTimeWeeks", { n: data.leadTimeWeeks })}
+                    </dd>
                   </div>
                   <div>
                     <dt className="text-[10px] uppercase tracking-[0.16em] text-muted-ink">
                       {t("labels.revenue")}
                     </dt>
-                    <dd className="mt-1 font-serif text-lg">{data.revenue}</dd>
+                    <dd className="mt-1 font-serif text-lg">
+                      {format.number(data.revenue, {
+                        style: "currency",
+                        currency: "RUB",
+                        currencyDisplay: "narrowSymbol",
+                        notation: "compact",
+                        maximumFractionDigits: 1,
+                      })}
+                    </dd>
                   </div>
                 </dl>
               </Reveal>

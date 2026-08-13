@@ -183,7 +183,8 @@
       "units": "Units sold",
       "leadTime": "Lead time",
       "revenue": "Revenue"
-    }
+    },
+    "leadTimeWeeks": "{n, plural, one {# week} other {# weeks}}"
   },
   "contact": {
     "titleLines": ["let's create"],

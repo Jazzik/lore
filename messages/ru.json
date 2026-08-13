@@ -183,7 +183,8 @@
       "units": "Продано",
       "leadTime": "Срок запуска",
       "revenue": "Выручка"
-    }
+    },
+    "leadTimeWeeks": "{n, plural, one {# неделя} few {# недели} other {# недель}}"
   },
   "contact": {
     "titleLines": ["создадим"],
