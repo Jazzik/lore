@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { FormEvent } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { useUIStore } from "@/store/ui";
 import { ROTATING_CAPTURE_IMAGES } from "@/lib/rotatingCaptureImages";
 import { SLIDE_IDS } from "@/lib/sections";
+import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 
 export function FloatingCapture() {
   const t = useTranslations("floatingCapture");
@@ -14,8 +16,22 @@ export function FloatingCapture() {
   const activeSlide = useUIStore((state) => state.activeSlide);
   const dismissed = useUIStore((state) => state.floatingWidgetDismissed);
   const dismiss = useUIStore((state) => state.dismissFloatingWidget);
-  const [sent, setSent] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
+  const [handle, setHandle] = useState("");
+  const [hp, setHp] = useState("");
+  const { submit, status } = useLeadSubmit();
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    submit({
+      name: "—",
+      contact: handle,
+      message: "",
+      channel: "telegram",
+      source: "floating-capture",
+      hp,
+    });
+  }
 
   const contactSlideIndex = SLIDE_IDS.indexOf("contact");
   const visible = activeSlide > 0 && activeSlide < contactSlideIndex && !dismissed;
@@ -83,30 +99,41 @@ export function FloatingCapture() {
               ))}
               <em className="italic text-rose">{t("titleAccent")}</em>
             </h3>
-            {sent ? (
+            {status === "success" ? (
               <p className="text-[11px] leading-relaxed text-muted-ink">
                 {t("sent")}
               </p>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-                className="flex items-stretch border-b border-line"
-              >
+              <form onSubmit={handleSubmit} className="flex items-stretch border-b border-line">
+                <input
+                  type="text"
+                  name="company"
+                  value={hp}
+                  onChange={(e) => setHp(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden
+                  className="pointer-events-none absolute h-0 w-0 opacity-0"
+                />
                 <input
                   placeholder={t("placeholder")}
+                  value={handle}
+                  onChange={(e) => setHandle(e.target.value)}
+                  required
                   className="w-full min-w-0 border-0 bg-transparent py-2 text-[11px] outline-none"
                 />
                 <button
                   type="submit"
-                  className="shrink-0 pl-3 text-[8px] uppercase tracking-[0.13em] text-foreground transition-colors hover:text-rose"
+                  disabled={status === "pending"}
+                  className="shrink-0 pl-3 text-[8px] uppercase tracking-[0.13em] text-foreground transition-colors hover:text-rose disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {t("submit")}
+                  {status === "pending" ? t("submitting") : t("submit")}
                 </button>
               </form>
             )}
+            {status === "error" ? (
+              <p className="mt-2 text-[10px] leading-relaxed text-rose">{t("error")}</p>
+            ) : null}
           </div>
         </motion.aside>
       ) : null}
