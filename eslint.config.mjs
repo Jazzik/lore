@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Standalone CommonJS tooling script, not app source.
+    ".claude/skills/i18n-parity-check/check-parity.js",
   ]),
 ]);
 

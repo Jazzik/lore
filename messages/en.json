@@ -179,6 +179,16 @@
     "note": "Pick whichever way of reaching us is easiest — the form adapts to it.",
     "fields": { "name": "Name", "contact": "Contact info", "message": "A little about you" },
     "submit": "Send",
+    "submitting": "Sending…",
+    "success": "Got it. We'll reply within one business day.",
+    "error": "Didn't go through. Reach us directly — contacts below.",
+    "errorRateLimited": "Too many attempts in a row. Wait a minute and send it again.",
+    "errors": {
+      "name": "What should we call you?",
+      "contact": "Leave a contact so we can reach you",
+      "contactEmail": "That doesn't look like an email",
+      "message": "Too long — please keep it under 2000 characters"
+    },
     "footerLabel": "Contacts"
   },
   "floatingCapture": {
@@ -187,6 +197,9 @@
     "titleAccent": "your next product",
     "placeholder": "@yourtelegram",
     "submit": "Let's talk →",
+    "submitting": "…",
+    "error": "Didn't send — message us on Telegram",
+    "errorRateLimited": "Too many attempts in a row. Wait a minute and try again.",
     "sent": "Got it. We'll find the product that fits your audience."
   },
   "liveCounter": {
