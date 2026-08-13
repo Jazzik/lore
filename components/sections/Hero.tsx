@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { HERO_VIDEOS } from "@/lib/heroVideos";
 
-// Swap in real footage later, e.g. "/media/hero.mp4" — everything else is
-// already wired up to render it in place of the gradient placeholder.
-const HERO_VIDEO_SRC = "";
+const HERO_VIDEO_INTERVAL_MS = 5500;
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -19,6 +19,14 @@ const fadeUp: Variants = {
 export function Hero() {
   const t = useTranslations("hero");
   const taglineLines = t.raw("taglineLines") as string[];
+  const [videoIndex, setVideoIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setVideoIndex((i) => (i + 1) % HERO_VIDEOS.length);
+    }, HERO_VIDEO_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <section
@@ -26,16 +34,24 @@ export function Hero() {
       className="relative flex min-h-svh items-center overflow-hidden px-6 pb-20 pt-28 md:px-[8vw] md:pb-24 md:pt-[110px]"
     >
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_72%_22%,rgba(201,141,152,0.2),transparent_45%),linear-gradient(180deg,#0d0b0a_0%,#17140f_55%,#0d0b0a_100%)]" />
-      {HERO_VIDEO_SRC ? (
-        <video
-          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
-          autoPlay
-          loop
-          muted
-          playsInline
-          src={HERO_VIDEO_SRC}
-        />
-      ) : null}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <AnimatePresence mode="sync">
+          <motion.video
+            key={videoIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            src={HERO_VIDEOS[videoIndex]}
+          />
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,11,10,0.35)_0%,rgba(13,11,10,0.55)_55%,rgba(13,11,10,0.85)_100%)]" />
+      </div>
 
       <div className="mx-auto w-full max-w-[1380px]">
         <motion.p
