@@ -7,9 +7,9 @@ export type CompanyStat = {
   value: number;
 };
 
-export const COMPANY_STATS: CompanyStat[] = [
+export const COMPANY_STATS: readonly CompanyStat[] = [
   { id: "projects", value: 42 },
   { id: "units", value: 61000 },
   { id: "factories", value: 6 },
   { id: "years", value: 7 },
-];
+] as const;
