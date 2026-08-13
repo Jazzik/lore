@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { QueryProvider } from "@/providers/QueryProvider";
+import { YandexMetrika } from "@/components/analytics/YandexMetrika";
 import "../globals.css";
 
 const serif = Cormorant_Garamond({
@@ -60,6 +61,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <QueryProvider>{children}</QueryProvider>
         </NextIntlClientProvider>
+        <YandexMetrika />
       </body>
     </html>
   );

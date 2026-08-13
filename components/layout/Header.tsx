@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { scrollToSection } from "@/lib/scrollToSection";
+import { track } from "@/lib/analytics";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
@@ -19,7 +20,10 @@ export function Header() {
       <div className="flex items-center gap-8">
         <button
           type="button"
-          onClick={() => scrollToSection("contact")}
+          onClick={() => {
+            track("cta_click", { placement: "header" });
+            scrollToSection("contact");
+          }}
           className="border-0 border-b border-line bg-transparent pb-[5px] text-[11px] uppercase tracking-[0.16em] text-foreground transition-colors hover:text-rose"
         >
           {t("cta")}

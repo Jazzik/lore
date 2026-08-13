@@ -2,6 +2,7 @@
 
 import { useMutation } from "@tanstack/react-query";
 import type { LeadPayload } from "@/lib/leadPayload";
+import { track } from "@/lib/analytics";
 
 type ApiResponse = {
   ok: boolean;
@@ -30,7 +31,15 @@ async function postLead(payload: LeadPayload): Promise<ApiResponse> {
 }
 
 export function useLeadSubmit() {
-  const mutation = useMutation({ mutationFn: postLead });
+  const mutation = useMutation({
+    mutationFn: postLead,
+    onSuccess: (_data, variables) => {
+      track("lead_submitted", { source: variables.source, channel: variables.channel });
+    },
+    onError: (_error, variables) => {
+      track("lead_failed", { source: variables.source });
+    },
+  });
 
   const fieldErrors =
     (mutation.error as (Error & { fieldErrors?: Partial<Record<string, string>> }) | null)
