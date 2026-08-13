@@ -56,7 +56,7 @@ function Tile({
       }}
     >
       <div
-        className="relative h-full w-full overflow-hidden rounded-2xl shadow-xl shadow-black/40"
+        className="relative h-full w-full"
         style={{ animation: `floatObject 5.2s ease-in-out ${floatDelay}s infinite` }}
       >
         <Image
@@ -65,7 +65,7 @@ function Tile({
           fill
           unoptimized
           sizes={`${size}px`}
-          className="object-cover"
+          className="object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.45)]"
         />
       </div>
     </motion.div>
