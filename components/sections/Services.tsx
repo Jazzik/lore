@@ -35,12 +35,15 @@ export function Services() {
           {items.map((item, i) => (
             <article
               key={item.title}
-              className={`border-b border-r border-line p-7 ${
+              className={`group border-b border-r border-line p-7 transition-colors duration-300 hover:bg-rose/[0.04] ${
                 i === 3 ? "sm:col-span-2" : ""
               }`}
             >
-              <h3 className="font-serif text-2xl">{item.title}</h3>
-              <div className="mb-5 mt-3 h-px w-9 bg-muted-ink" />
+              <div className="font-serif text-xs text-rose">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <h3 className="mt-3 font-serif text-2xl">{item.title}</h3>
+              <div className="mb-5 mt-3 h-px w-9 bg-muted-ink transition-all duration-300 group-hover:w-14 group-hover:bg-rose" />
               <p className="whitespace-pre-line text-xs leading-loose text-muted-ink">
                 {item.lines.join("\n")}
               </p>
