@@ -35,22 +35,26 @@ export function Hero() {
     >
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_72%_22%,rgba(201,141,152,0.2),transparent_45%),linear-gradient(180deg,#0d0b0a_0%,#17140f_55%,#0d0b0a_100%)]" />
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <AnimatePresence mode="sync">
-          <motion.video
-            key={videoIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.6 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0 h-full w-full object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-            src={HERO_VIDEOS[videoIndex]}
-          />
-        </AnimatePresence>
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,11,10,0.35)_0%,rgba(13,11,10,0.55)_55%,rgba(13,11,10,0.85)_100%)]" />
+        <div
+          className="absolute inset-0 [mask-image:radial-gradient(ellipse_75%_75%_at_50%_50%,#000_55%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_75%_75%_at_50%_50%,#000_55%,transparent_100%)]"
+        >
+          <AnimatePresence mode="sync">
+            <motion.video
+              key={videoIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.6 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="absolute inset-0 h-full w-full object-cover blur-[2px]"
+              autoPlay
+              loop
+              muted
+              playsInline
+              src={HERO_VIDEOS[videoIndex]}
+            />
+          </AnimatePresence>
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,11,10,0.45)_0%,rgba(13,11,10,0.6)_45%,rgba(13,11,10,0.92)_85%,rgba(13,11,10,1)_100%)]" />
       </div>
 
       <div className="mx-auto w-full max-w-[1380px]">
