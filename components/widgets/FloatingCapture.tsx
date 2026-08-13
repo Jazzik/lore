@@ -24,7 +24,7 @@ export function FloatingCapture() {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     submit({
-      name: "—",
+      name: "Без имени",
       contact: handle,
       message: "",
       channel: "telegram",
@@ -100,7 +100,7 @@ export function FloatingCapture() {
               <em className="italic text-rose">{t("titleAccent")}</em>
             </h3>
             {status === "success" ? (
-              <p className="text-[11px] leading-relaxed text-muted-ink">
+              <p role="status" aria-live="polite" className="text-[11px] leading-relaxed text-muted-ink">
                 {t("sent")}
               </p>
             ) : (
@@ -132,7 +132,9 @@ export function FloatingCapture() {
               </form>
             )}
             {status === "error" ? (
-              <p className="mt-2 text-[10px] leading-relaxed text-rose">{t("error")}</p>
+              <p role="alert" aria-live="assertive" className="mt-2 text-[10px] leading-relaxed text-rose">
+                {t("error")}
+              </p>
             ) : null}
           </div>
         </motion.aside>

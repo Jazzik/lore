@@ -97,10 +97,11 @@ export function Contact() {
                 value={values.name}
                 onChange={(e) => setValues((v) => ({ ...v, name: e.target.value }))}
                 aria-invalid={Boolean(fieldErrors.name)}
+                aria-describedby={fieldErrors.name ? "contact-name-error" : undefined}
                 className="w-full border-0 border-b border-line bg-transparent pb-3 text-[15px] outline-none focus:border-foreground"
               />
               {fieldErrors.name ? (
-                <span className="mt-2 block text-[11px] text-rose">
+                <span id="contact-name-error" className="mt-2 block text-[11px] text-rose">
                   {t("errors.name")}
                 </span>
               ) : null}
@@ -115,10 +116,11 @@ export function Contact() {
                 value={values.contact}
                 onChange={(e) => setValues((v) => ({ ...v, contact: e.target.value }))}
                 aria-invalid={Boolean(fieldErrors.contact)}
+                aria-describedby={fieldErrors.contact ? "contact-contact-error" : undefined}
                 className="w-full border-0 border-b border-line bg-transparent pb-3 text-[15px] outline-none focus:border-foreground"
               />
               {fieldErrors.contact ? (
-                <span className="mt-2 block text-[11px] text-rose">
+                <span id="contact-contact-error" className="mt-2 block text-[11px] text-rose">
                   {fieldErrors.contact === "not_an_email"
                     ? t("errors.contactEmail")
                     : t("errors.contact")}
@@ -144,10 +146,14 @@ export function Contact() {
               {status === "pending" ? t("submitting") : t("submit")}
             </button>
             {status === "success" ? (
-              <p className="text-sm text-foreground sm:col-span-2">{t("success")}</p>
+              <p role="status" aria-live="polite" className="text-sm text-foreground sm:col-span-2">
+                {t("success")}
+              </p>
             ) : null}
             {status === "error" ? (
-              <p className="text-sm text-rose sm:col-span-2">{t("error")}</p>
+              <p role="alert" aria-live="assertive" className="text-sm text-rose sm:col-span-2">
+                {t("error")}
+              </p>
             ) : null}
           </form>
 
