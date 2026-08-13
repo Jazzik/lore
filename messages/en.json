@@ -185,7 +185,9 @@
       "leadTime": "Lead time",
       "revenue": "Revenue"
     },
-    "leadTimeWeeks": "{n, plural, one {# week} other {# weeks}}"
+    "leadTimeWeeks": "{n, plural, one {# week} other {# weeks}}",
+    "compact": { "millions": "{v}M", "thousands": "{v}K" },
+    "money": { "millions": "₽{v}M", "thousands": "₽{v}K" }
   },
   "faq": {
     "eyebrow": "Before you reach out",

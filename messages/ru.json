@@ -185,7 +185,9 @@
       "leadTime": "Срок запуска",
       "revenue": "Выручка"
     },
-    "leadTimeWeeks": "{n, plural, one {# неделя} few {# недели} other {# недель}}"
+    "leadTimeWeeks": "{n, plural, one {# неделя} few {# недели} other {# недель}}",
+    "compact": { "millions": "{v} млн", "thousands": "{v} тыс." },
+    "money": { "millions": "{v} млн ₽", "thousands": "{v} тыс. ₽" }
   },
   "faq": {
     "eyebrow": "Прежде чем написать",

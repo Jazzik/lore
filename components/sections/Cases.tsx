@@ -4,6 +4,17 @@ import { useFormatter, useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
 import { CASE_STUDIES } from "@/lib/caseStudies";
 
+// Компактные числа («3,9 млн ₽», «310 тыс.») собираются вручную, а не через
+// Intl с notation: "compact". ICU в Node и в браузере расходятся на этом
+// формате — сервер отдаёт "585,0 тыс. ₽", клиент рисует "585 тыс. ₽", — и
+// React роняет гидрацию на несовпадении разметки. Здесь масштаб выбираем
+// сами, а Intl оставляем только на десятичной части, где локали стабильны.
+function compact(value: number) {
+  return value >= 1_000_000
+    ? { scale: "millions" as const, value: value / 1_000_000 }
+    : { scale: "thousands" as const, value: value / 1_000 };
+}
+
 export function Cases() {
   const t = useTranslations("cases");
   const format = useFormatter();
@@ -44,7 +55,12 @@ export function Cases() {
                       {t("labels.audience")}
                     </dt>
                     <dd className="mt-1 font-serif text-lg">
-                      {format.number(data.audience, { notation: "compact" })}
+                      {(() => {
+                        const a = compact(data.audience);
+                        return t(`compact.${a.scale}`, {
+                          v: format.number(a.value, { maximumFractionDigits: 1 }),
+                        });
+                      })()}
                     </dd>
                   </div>
                   <div>
@@ -66,13 +82,12 @@ export function Cases() {
                       {t("labels.revenue")}
                     </dt>
                     <dd className="mt-1 font-serif text-lg">
-                      {format.number(data.revenue, {
-                        style: "currency",
-                        currency: "RUB",
-                        currencyDisplay: "narrowSymbol",
-                        notation: "compact",
-                        maximumFractionDigits: 1,
-                      })}
+                      {(() => {
+                        const r = compact(data.revenue);
+                        return t(`money.${r.scale}`, {
+                          v: format.number(r.value, { maximumFractionDigits: 1 }),
+                        });
+                      })()}
                     </dd>
                   </div>
                 </dl>
