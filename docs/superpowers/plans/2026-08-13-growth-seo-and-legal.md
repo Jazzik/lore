@@ -270,7 +270,7 @@ Promise.all([import("./components/quiz/quizReducer.ts"), import("./lib/quizSteps
 
 - [ ] **Step 4: Собрать `components/quiz/Quiz.tsx`**
 
-Один вопрос на экране, варианты — крупные кликабельные строки в стиле `Benefits.tsx`, индикатор прогресса «шаг N из 4», кнопка «назад». На финальном экране — поле контакта и отправка через `useLeadSubmit` с `channel: "telegram"`, `source: "quiz"`, `name: "—"`; ответы складываются в `message` человекочитаемой строкой, чтобы в Telegram приходил готовый бриф. `channel` и `name` обязательны: без них `validateLead` вернёт 400 — см. `lib/leadPayload.ts` в P0 Task 2. Переходы между шагами — `AnimatePresence` из framer-motion, как в `FloatingCapture.tsx`.
+Один вопрос на экране, варианты — крупные кликабельные строки в стиле `Benefits.tsx`, индикатор прогресса «шаг N из 4», кнопка «назад». На финальном экране — поле контакта и отправка через `useLeadSubmit` с `channel: "telegram"`, `source: "quiz"`, `name: "Без имени"`; ответы складываются в `message` человекочитаемой строкой, чтобы в Telegram приходил готовый бриф. `channel` и `name` обязательны: без них `validateLead` вернёт 400 — см. `lib/leadPayload.ts` в P0 Task 2. Переходы между шагами — `AnimatePresence` из framer-motion, как в `FloatingCapture.tsx`.
 
 - [ ] **Step 5: Встроить квиз в `ProductDiscovery.tsx`**
 

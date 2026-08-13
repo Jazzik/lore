@@ -354,7 +354,7 @@ Skill `new-section`: имя `Calculator`, id `calculator`, позиция — **
 
 Результат — крупным серифом, `authorIncome` акцентом `text-rose`. Под результатом обязательная оговорка мелким шрифтом: расчёт оценочный, не оферта.
 
-Под результатом — поле контакта и кнопка, отправляющие заявку через `useLeadSubmit` с `channel: "telegram"`, `source: "calculator"`, `name: "—"` и параметрами расчёта в `message`, чтобы в Telegram приходил не голый хэндл, а контекст. `channel` и `name` обязательны: без них `validateLead` вернёт 400 — см. `lib/leadPayload.ts` в P0 Task 2.
+Под результатом — поле контакта и кнопка, отправляющие заявку через `useLeadSubmit` с `channel: "telegram"`, `source: "calculator"`, `name: "Без имени"` и параметрами расчёта в `message`, чтобы в Telegram приходил не голый хэндл, а контекст. `channel` и `name` обязательны: без них `validateLead` вернёт 400 — см. `lib/leadPayload.ts` в P0 Task 2.
 
 - [ ] **Step 6: Проверки**
 

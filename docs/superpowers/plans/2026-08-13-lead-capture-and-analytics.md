@@ -714,7 +714,7 @@ const { submit, status } = useLeadSubmit();
 function handleSubmit(e: React.FormEvent) {
   e.preventDefault();
   submit({
-    name: "—",
+    name: "Без имени",
     contact: handle,
     message: "",
     channel: "telegram",
@@ -726,7 +726,7 @@ function handleSubmit(e: React.FormEvent) {
 
 Рендер по статусу: `success` → `t("sent")` (ключ уже есть); `error` → `t("error")`; `pending` → кнопка `disabled`, текст `t("submitting")`. Honeypot — такой же скрытый инпут, как в Step 1.
 
-Виджет отправляет только хэндл, поэтому `name` уходит как `"—"`: валидация требует минимум 2 символа, и это осознанная заглушка, а не пропуск поля.
+Виджет отправляет только хэндл, поэтому `name` уходит как `"Без имени"`: валидация требует минимум 2 символа, и это осознанная заглушка, а не пропуск поля.
 
 - [ ] **Step 4: Проверки**
 
