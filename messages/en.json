@@ -152,8 +152,16 @@
     "eyebrow": "Product showcase",
     "titleLines": ["what we"],
     "titleAccent": "can build",
-    "body": "From hoodies to tumblers — any merch format that fits the creator's brand.",
-    "items": ["Hoodie", "Cap", "Tumbler", "Tote bag", "Poster", "Pin set", "Candle"]
+    "body": "Not a logo on a t-shirt — an object that earns its place on its own.",
+    "items": [
+      "Board game",
+      "Fragrance",
+      "Hot sauce",
+      "Book",
+      "Lamp",
+      "Skate deck",
+      "Care kit"
+    ]
   },
   "financialModel": {
     "kicker": "financial",
