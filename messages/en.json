@@ -97,6 +97,7 @@
     "items": ["Development", "Manufacturing", "Packaging", "Quality control", "Delivery"]
   },
   "quality": {
+    "_demo": "fabricated demo data, replace before publishing",
     "eyebrow": "Materials & quality control",
     "titleLines": ["nothing crooked"],
     "titleAccent": "under your name",
@@ -256,6 +257,7 @@
     ]
   },
   "cases": {
+    "_demo": "fabricated demo data, replace before publishing",
     "eyebrow": "What we've already built",
     "items": [
       { "id": "vera-osenina", "num": "01", "name": "Vera Osenina", "text": "A slow-living lifestyle creator launched a board game, Nest — built for phone-free evenings together. The run sold out in three weeks." },
@@ -273,6 +275,7 @@
     "money": { "millions": "₽{v}M", "thousands": "₽{v}K", "plain": "₽{v}" }
   },
   "about": {
+    "_demo": "fabricated demo data, replace before publishing",
     "eyebrow": "Who's behind LORE",
     "titleLine": "not an agency —",
     "titleAccent": "a team with factories",
@@ -289,6 +292,7 @@
     "fineprint": "Production is based out of Moscow."
   },
   "faq": {
+    "_demo": "fabricated demo data, replace before publishing",
     "eyebrow": "Before you reach out",
     "title": "questions",
     "titleAccent": "you already have",

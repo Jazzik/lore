@@ -1,5 +1,9 @@
 "use client";
 
+// ДЕМО-ДАННЫЕ. Год основания, цифры о компании и состав команды в messages
+// namespace `about` вымышлены для превью. Реквизиты юрлица намеренно НЕ
+// выдуманы — выдуманные реквизиты опаснее их отсутствия.
+
 import { useFormatter, useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
 
