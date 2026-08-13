@@ -354,7 +354,7 @@ Skill `new-section`: имя `Calculator`, id `calculator`, позиция — **
 
 Результат — крупным серифом, `authorIncome` акцентом `text-rose`. Под результатом обязательная оговорка мелким шрифтом: расчёт оценочный, не оферта.
 
-Под результатом — поле контакта и кнопка, отправляющие заявку через `useLeadSubmit` с `channel: "telegram"`, `source: "calculator"`, `name: "Без имени"` и параметрами расчёта в `message`, чтобы в Telegram приходил не голый хэндл, а контекст. `channel` и `name` обязательны: без них `validateLead` вернёт 400 — см. `lib/leadPayload.ts` в P0 Task 2.
+Под результатом — поле контакта и кнопка, отправляющие заявку через `useLeadSubmit` с `channel: "telegram"`, `source: "calculator"`, `name: "Без имени"` и параметрами расчёта в `message`, чтобы в Telegram приходил не голый хэндл, а контекст. `channel`, `name` и `hp` обязательны: `LeadPayload` требует все шесть полей, иначе не скомпилируется, а без `channel`/`name` `validateLead` вернёт 400 — см. `lib/leadPayload.ts` в P0 Task 2. Honeypot `hp` здесь такой же скрытый инпут, как в `FloatingCapture.tsx`: без него форма остаётся открытой для ботов. Поле контакта требует минимум 3 символа.
 
 - [ ] **Step 6: Проверки**
 
