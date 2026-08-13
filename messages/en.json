@@ -15,6 +15,7 @@
       "differentiation": "Difference",
       "services": "What we take on",
       "production": "Production",
+      "journey": "Product journey",
       "product-discovery": "Product discovery",
       "benefits": "Benefits",
       "financial-model": "Financial model",
@@ -89,6 +90,37 @@
     "titleAccent": "to doorstep",
     "body": "We handle the entire path of the product — from development to delivery.",
     "items": ["Development", "Manufacturing", "Packaging", "Quality control", "Delivery"]
+  },
+  "journey": {
+    "eyebrow": "From the floor to the doorstep",
+    "titleLines": ["the product's"],
+    "titleAccent": "journey",
+    "body": "The same object lives three lives: born on the production floor, comes alive in a creator's hands, and finds its person.",
+    "acts": [
+      {
+        "num": "01",
+        "kicker": "Production",
+        "title": "Born on the floor",
+        "body": "Materials, samples, quality control — before it becomes a product, it passes through dozens of hands.",
+        "materialTag": "footage coming soon"
+      },
+      {
+        "num": "02",
+        "kicker": "Creator shows it off",
+        "title": "Comes alive on camera",
+        "body": "The creator introduces the product to their audience — the moment that turns an object into a story.",
+        "likesLabel": "likes",
+        "commentsLabel": "comments"
+      },
+      {
+        "num": "03",
+        "kicker": "Customer unboxes it",
+        "title": "Finds its person",
+        "body": "The box reaches its owner — and that's the moment the whole thing was built for.",
+        "cta": "open the box",
+        "reveal": "with love, LORE"
+      }
+    ]
   },
   "productDiscovery": {
     "titleLines": ["don't know"],
