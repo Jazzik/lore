@@ -20,6 +20,7 @@
       "benefits": "Benefits",
       "financial-model": "Financial model",
       "market-cases": "Cases",
+      "cases": "Our cases",
       "contact": "Contact"
     }
   },
@@ -169,6 +170,20 @@
       { "name": "Chamberlain Coffee", "text": "A personal habit turned into a full FMCG product, on shelves at major US retailers and earning $22M a year." },
       { "name": "Skims", "text": "Reinventing the shapewear market through size inclusivity and viral marketing — and, of course, a personal brand." }
     ]
+  },
+  "cases": {
+    "eyebrow": "What we've already built",
+    "items": [
+      { "id": "vera-osenina", "name": "Vera Osenina", "text": "A slow-living lifestyle creator launched a board game, Nest — built for phone-free evenings together. The run sold out in three weeks." },
+      { "id": "dmitry-korshun", "name": "Dmitry Korshun", "text": "A travel creator turned his stories from the road into a limited-run fragrance, Azimuth. Every batch sold out before it even shipped." },
+      { "id": "milena-grace", "name": "Milena Grace", "text": "A food creator bottled her signature recipe as a hot sauce, Milena's Fire. The first batch sold out faster than the labels could be printed." }
+    ],
+    "labels": {
+      "audience": "Audience",
+      "units": "Units sold",
+      "leadTime": "Lead time",
+      "revenue": "Revenue"
+    }
   },
   "contact": {
     "titleLines": ["let's create"],

@@ -13,6 +13,7 @@ import { Benefits } from "@/components/sections/Benefits";
 import { Showcase } from "@/components/sections/Showcase";
 import { FinancialModel } from "@/components/sections/FinancialModel";
 import { MarketCases } from "@/components/sections/MarketCases";
+import { Cases } from "@/components/sections/Cases";
 import { Contact } from "@/components/sections/Contact";
 import { FloatingCapture } from "@/components/widgets/FloatingCapture";
 import { LiveCounter } from "@/components/widgets/LiveCounter";
@@ -45,6 +46,7 @@ export default async function Home({
         <Benefits />
         <FinancialModel />
         <MarketCases />
+        <Cases />
         <Contact />
       </main>
       <FloatingCapture />
