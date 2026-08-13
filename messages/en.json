@@ -7,7 +7,20 @@
     "cta": "Start a project"
   },
   "progress": {
-    "label": "Section navigation"
+    "label": "Section navigation",
+    "labels": {
+      "hero": "Home",
+      "positioning": "Positioning",
+      "showcase": "Showcase",
+      "differentiation": "Difference",
+      "services": "What we take on",
+      "production": "Production",
+      "product-discovery": "Product discovery",
+      "benefits": "Benefits",
+      "financial-model": "Financial model",
+      "market-cases": "Cases",
+      "contact": "Contact"
+    }
   },
   "hero": {
     "eyebrow": "Product studio for creators",

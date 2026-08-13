@@ -7,7 +7,20 @@
     "cta": "Начать проект"
   },
   "progress": {
-    "label": "Навигация по разделам"
+    "label": "Навигация по разделам",
+    "labels": {
+      "hero": "Главная",
+      "positioning": "Позиционирование",
+      "showcase": "Витрина продуктов",
+      "differentiation": "Отличия",
+      "services": "Что берём на себя",
+      "production": "Производство",
+      "product-discovery": "Поиск продукта",
+      "benefits": "Преимущества",
+      "financial-model": "Финансовая модель",
+      "market-cases": "Кейсы",
+      "contact": "Контакты"
+    }
   },
   "hero": {
     "eyebrow": "Продакшн-студия для авторов",

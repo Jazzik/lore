@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
+import { SectionGlow } from "./decor";
 
 export function Benefits() {
   const t = useTranslations("benefits");
@@ -10,8 +11,9 @@ export function Benefits() {
   return (
     <section
       id="benefits"
-      className="flex min-h-svh items-center px-6 py-24 md:px-[8vw]"
+      className="relative flex min-h-svh items-center overflow-hidden px-6 py-24 md:px-[8vw]"
     >
+      <SectionGlow className="-left-40 bottom-0" />
       <div className="mx-auto grid w-full max-w-[1380px] grid-cols-1 border-l border-t border-line sm:grid-cols-2 md:grid-cols-3">
         {items.map((item, i) => (
           <Reveal

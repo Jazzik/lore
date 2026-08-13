@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
+import { SectionGlow } from "./decor";
 
 export function FinancialModel() {
   const t = useTranslations("financialModel");
@@ -14,8 +15,9 @@ export function FinancialModel() {
   return (
     <section
       id="financial-model"
-      className="flex min-h-svh items-center px-6 py-24 md:px-[8vw]"
+      className="relative flex min-h-svh items-center overflow-hidden px-6 py-24 md:px-[8vw]"
     >
+      <SectionGlow className="-right-32 top-1/2 -translate-y-1/2" />
       <div className="mx-auto w-full max-w-[1380px]">
         <Reveal className="mb-12">
           <div className="font-serif text-[clamp(32px,5vw,60px)] italic leading-none text-muted-ink">

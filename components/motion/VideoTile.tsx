@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "@/lib/useInView";
 
 export function VideoTile({
@@ -12,6 +13,17 @@ export function VideoTile({
   className?: string;
 }) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (!inView) return;
+    const video = videoRef.current;
+    if (!video) return;
+    video.play().catch(() => {
+      // autoplay rejected — tile stays on the paper backdrop
+    });
+  }, [inView]);
 
   return (
     <div
@@ -20,13 +32,16 @@ export function VideoTile({
     >
       {inView ? (
         <video
+          ref={videoRef}
           src={src}
-          autoPlay
           loop
           muted
           playsInline
           preload="none"
-          className="absolute inset-0 h-full w-full object-cover"
+          onPlaying={() => setIsPlaying(true)}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+            isPlaying ? "opacity-100" : "opacity-0"
+          }`}
         />
       ) : null}
       {caption ? (
