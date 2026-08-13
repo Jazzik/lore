@@ -17,11 +17,27 @@ export function Contact() {
 
   const [channel, setChannel] = useState<LeadChannel>("whatsapp");
   const [values, setValues] = useState({ name: "", contact: "", message: "", hp: "" });
-  const { submit, status, fieldErrors } = useLeadSubmit();
+  const { submit, status, fieldErrors, reset, errorCode } = useLeadSubmit();
+
+  // Once the user starts a new lead after a success/error, drop the stale
+  // mutation state so the old success/error copy doesn't linger over fresh input.
+  function updateValues(patch: Partial<typeof values>) {
+    if (status === "success" || status === "error") reset();
+    setValues((v) => ({ ...v, ...patch }));
+  }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    submit({ ...values, channel, source: "contact" });
+    submit(
+      { ...values, channel, source: "contact" },
+      {
+        // Clear the form on success so a stray second tap on mobile (button
+        // re-enables once status leaves "pending") can't resubmit the same
+        // lead — the now-empty required fields block the browser from
+        // submitting again.
+        onSuccess: () => setValues({ name: "", contact: "", message: "", hp: "" }),
+      },
+    );
   }
 
   const whatsapp = whatsappUrl();
@@ -79,11 +95,12 @@ export function Contact() {
           >
             <input
               type="text"
-              name="company"
+              name="lore_hp_ref"
               value={values.hp}
-              onChange={(e) => setValues((v) => ({ ...v, hp: e.target.value }))}
+              onChange={(e) => updateValues({ hp: e.target.value })}
               tabIndex={-1}
-              autoComplete="off"
+              autoComplete="new-password"
+              data-1p-ignore=""
               aria-hidden
               className="pointer-events-none absolute h-0 w-0 opacity-0"
             />
@@ -95,7 +112,7 @@ export function Contact() {
                 name="name"
                 required
                 value={values.name}
-                onChange={(e) => setValues((v) => ({ ...v, name: e.target.value }))}
+                onChange={(e) => updateValues({ name: e.target.value })}
                 aria-invalid={Boolean(fieldErrors.name)}
                 aria-describedby={fieldErrors.name ? "contact-name-error" : undefined}
                 className="w-full border-0 border-b border-line bg-transparent pb-3 text-[15px] outline-none focus:border-foreground"
@@ -114,7 +131,7 @@ export function Contact() {
                 name="contact"
                 required
                 value={values.contact}
-                onChange={(e) => setValues((v) => ({ ...v, contact: e.target.value }))}
+                onChange={(e) => updateValues({ contact: e.target.value })}
                 aria-invalid={Boolean(fieldErrors.contact)}
                 aria-describedby={fieldErrors.contact ? "contact-contact-error" : undefined}
                 className="w-full border-0 border-b border-line bg-transparent pb-3 text-[15px] outline-none focus:border-foreground"
@@ -134,9 +151,17 @@ export function Contact() {
               <input
                 name="message"
                 value={values.message}
-                onChange={(e) => setValues((v) => ({ ...v, message: e.target.value }))}
+                onChange={(e) => updateValues({ message: e.target.value })}
+                maxLength={2000}
+                aria-invalid={Boolean(fieldErrors.message)}
+                aria-describedby={fieldErrors.message ? "contact-message-error" : undefined}
                 className="w-full border-0 border-b border-line bg-transparent pb-3 text-[15px] outline-none focus:border-foreground"
               />
+              {fieldErrors.message ? (
+                <span id="contact-message-error" className="mt-2 block text-[11px] text-rose">
+                  {t("errors.message")}
+                </span>
+              ) : null}
             </label>
             <button
               type="submit"
@@ -152,7 +177,7 @@ export function Contact() {
             ) : null}
             {status === "error" ? (
               <p role="alert" aria-live="assertive" className="text-sm text-rose sm:col-span-2">
-                {t("error")}
+                {errorCode === "rate_limited" ? t("errorRateLimited") : t("error")}
               </p>
             ) : null}
           </form>

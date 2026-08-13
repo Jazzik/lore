@@ -14,17 +14,16 @@ import { checkRateLimit } from "@/lib/rateLimit";
 import { sendLeadToTelegram } from "@/lib/telegram";
 
 export async function POST(request: Request) {
+  // No proxy header (self-hosted with nothing in front) means we can't tell
+  // visitors apart — `ip === null` here deliberately skips rate limiting
+  // rather than making the whole site share one 5-per-60s bucket. Losing
+  // per-IP throttling in that case is far cheaper than dropping real leads
+  // during a traffic spike; the honeypot below remains the bot defence.
+  // Deploy behind a proxy that sets x-forwarded-for or x-real-ip to restore it.
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     request.headers.get("x-real-ip") ||
-    "unknown";
-
-  if (!checkRateLimit(ip)) {
-    return NextResponse.json(
-      { ok: false, error: "rate_limited" },
-      { status: 429 },
-    );
-  }
+    null;
 
   const body: unknown = await request.json().catch(() => null);
   const result = validateLead(body);
@@ -50,6 +49,16 @@ export async function POST(request: Request) {
   // Боту отвечаем успехом: пусть считает, что сработало, и не подбирает обход.
   if (bot) {
     return NextResponse.json({ ok: true });
+  }
+
+  // Rate limiting sits here — after validation/bot checks, right before the
+  // expensive Telegram call — so failed validation never burns the budget
+  // and a real user fixing a typo doesn't get locked out on their next try.
+  if (ip !== null && !checkRateLimit(ip)) {
+    return NextResponse.json(
+      { ok: false, error: "rate_limited" },
+      { status: 429 },
+    );
   }
 
   try {

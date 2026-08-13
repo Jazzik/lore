@@ -45,11 +45,21 @@ export function useLeadSubmit() {
     (mutation.error as (Error & { fieldErrors?: Partial<Record<string, string>> }) | null)
       ?.fieldErrors ?? {};
 
+  // Additive discriminator so callers can tell rate_limited apart from
+  // send_failed/network errors without changing the four existing fields
+  // both forms already depend on. Mirrors the `error` string the route
+  // returns ("rate_limited" | "send_failed"), or "request_failed" for
+  // anything that never got a structured response (network error, bad JSON).
+  const errorCode = mutation.isError
+    ? (mutation.error as Error | null)?.message ?? "request_failed"
+    : null;
+
   // react-query v5 отдаёт ровно эти четыре значения — пробрасываем как есть.
   return {
     submit: mutation.mutate,
     status: mutation.status,
     fieldErrors,
     reset: mutation.reset,
+    errorCode,
   } as const;
 }

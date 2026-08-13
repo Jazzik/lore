@@ -5,6 +5,13 @@
 const WINDOW_MS = 60_000;
 const MAX_IN_WINDOW = 5;
 
+// Hard cap on distinct tracked keys. Without this, a flood with rotating
+// x-forwarded-for values (or just organic traffic at scale) grows the map
+// without bound — and the old "sweep when size > 5000" approach only deleted
+// keys whose *every* timestamp was stale, so a flood that keeps every key
+// fresh made the sweep scan the whole map on every request and evict nothing.
+const MAX_KEYS = 5000;
+
 const hits = new Map<string, number[]>();
 
 export function checkRateLimit(key: string): boolean {
@@ -17,13 +24,18 @@ export function checkRateLimit(key: string): boolean {
   }
 
   recent.push(now);
+
+  // Delete-then-set moves this key to the end of the Map's iteration order
+  // (Maps iterate in insertion order), so the map self-orders
+  // least-recently-touched-first with no per-request scan.
+  hits.delete(key);
   hits.set(key, recent);
 
-  // Карта не должна расти бесконечно на длинном процессе.
-  if (hits.size > 5000) {
-    for (const [k, times] of hits) {
-      if (times.every((t) => now - t >= WINDOW_MS)) hits.delete(k);
-    }
+  // Evict only the oldest entry/entries, O(evicted) instead of O(map size).
+  while (hits.size > MAX_KEYS) {
+    const oldestKey = hits.keys().next().value;
+    if (oldestKey === undefined) break;
+    hits.delete(oldestKey);
   }
 
   return true;

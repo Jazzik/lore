@@ -19,7 +19,7 @@ export function FloatingCapture() {
   const [imageIndex, setImageIndex] = useState(0);
   const [handle, setHandle] = useState("");
   const [hp, setHp] = useState("");
-  const { submit, status } = useLeadSubmit();
+  const { submit, status, errorCode } = useLeadSubmit();
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -107,11 +107,12 @@ export function FloatingCapture() {
               <form onSubmit={handleSubmit} className="flex items-stretch border-b border-line">
                 <input
                   type="text"
-                  name="company"
+                  name="lore_hp_ref"
                   value={hp}
                   onChange={(e) => setHp(e.target.value)}
                   tabIndex={-1}
-                  autoComplete="off"
+                  autoComplete="new-password"
+                  data-1p-ignore=""
                   aria-hidden
                   className="pointer-events-none absolute h-0 w-0 opacity-0"
                 />
@@ -133,7 +134,7 @@ export function FloatingCapture() {
             )}
             {status === "error" ? (
               <p role="alert" aria-live="assertive" className="mt-2 text-[10px] leading-relaxed text-rose">
-                {t("error")}
+                {errorCode === "rate_limited" ? t("errorRateLimited") : t("error")}
               </p>
             ) : null}
           </div>
