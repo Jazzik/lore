@@ -22,14 +22,22 @@ export function MediaSlot({
 }) {
   const [ready, setReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    if (kind !== "video" || !src) return;
-    videoRef.current?.play().catch(() => {});
+    if (kind === "video") {
+      videoRef.current?.play().catch(() => {});
+      return;
+    }
+    // Cached images can finish loading before onLoad attaches, so React
+    // never sees the event — check the already-complete state directly.
+    if (kind === "image" && imgRef.current?.complete) {
+      setReady(true);
+    }
   }, [kind, src]);
 
   return (
-    <div className={`relative overflow-hidden bg-paper ${className}`}>
+    <div className={`overflow-hidden bg-paper ${className}`}>
       {src ? (
         kind === "video" ? (
           <video
@@ -46,6 +54,7 @@ export function MediaSlot({
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
           <img
+            ref={imgRef}
             src={src}
             alt=""
             onLoad={() => setReady(true)}

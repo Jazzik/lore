@@ -5,6 +5,13 @@ import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { Reveal } from "@/components/motion/Reveal";
 import { MediaSlot } from "@/components/motion/MediaSlot";
+import { FLOATING_IMAGES } from "@/lib/floatingImages";
+
+// Reuse real LORE assets already used elsewhere on the page as stand-ins
+// until dedicated production/unboxing footage is shot.
+const PRODUCTION_IMAGE = FLOATING_IMAGES[0];
+const BLOGGER_VIDEO = "/media/product-show-videos/Girl_showing_makeup_palette_202608130012.mp4";
+const UNBOXING_VIDEO = "https://static.higgsfield.ai/marketing/slides/unboxing-mini.mp4";
 
 type Act = {
   num: string;
@@ -117,6 +124,138 @@ function PersonIcon({ className = "" }: { className?: string }) {
   );
 }
 
+/**
+ * A real CSS 3D box: front/left/right wall faces built with
+ * transform-style: preserve-3d + a shared perspective (same construction
+ * as the classic "fold faces from a shared edge" pattern — see
+ * css-tricks.com/how-to-make-a-pure-css-3d-package-toggle), plus two
+ * flaps hinged with rotateY at the true wall edges. Because every face is
+ * a real plane in one consistent 3D scene (not a single flat trapezoid
+ * standing in for a lid), the geometry stays coherent at every rotation
+ * angle instead of reading as a flat, skewed slab.
+ */
+const BOX_W = 200;
+const BOX_D = 132;
+const BOX_H = 78;
+
+function Box3D({ open, label }: { open: boolean; label?: string }) {
+  const ease = "cubic-bezier(0.65, 0, 0.35, 1)";
+  return (
+    <div
+      className="absolute inset-0 z-10 transition-opacity duration-300"
+      style={open ? { opacity: 0, transitionDelay: "650ms" } : { opacity: 1 }}
+    >
+      <div className="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 [perspective:1000px]">
+        <div
+          className="relative"
+          style={{
+            width: BOX_W,
+            height: BOX_D,
+            transformStyle: "preserve-3d",
+            transform: "rotateX(56deg) rotateZ(-2deg)",
+          }}
+        >
+          {/* interior floor, revealed once the flaps swing open */}
+          <div className="absolute inset-0" style={{ background: "#181410" }} />
+
+          {/* front wall */}
+          <div
+            className="absolute left-0 top-full"
+            style={{
+              width: BOX_W,
+              height: BOX_H,
+              transformOrigin: "top",
+              transform: "rotateX(-90deg)",
+              background: "linear-gradient(to bottom, #362a1c, #221a10)",
+              boxShadow: "inset 0 1px 0 rgba(243,237,230,0.12)",
+            }}
+          />
+
+          {/* left wall */}
+          <div
+            className="absolute left-0 top-0"
+            style={{
+              width: BOX_H,
+              height: BOX_D,
+              transformOrigin: "left",
+              transform: "rotateY(90deg)",
+              background: "linear-gradient(to right, #241b11, #170f09)",
+            }}
+          />
+
+          {/* right wall */}
+          <div
+            className="absolute right-0 top-0"
+            style={{
+              width: BOX_H,
+              height: BOX_D,
+              transformOrigin: "right",
+              transform: "rotateY(-90deg)",
+              background: "linear-gradient(to left, #241b11, #170f09)",
+            }}
+          />
+
+          {/* left flap: hinged at the box's left edge, swings back over the left wall */}
+          <div
+            className="absolute left-0 top-0 transition-transform"
+            style={{
+              width: BOX_W / 2,
+              height: BOX_D,
+              transformOrigin: "left",
+              transformStyle: "preserve-3d",
+              transitionDuration: "750ms",
+              transitionTimingFunction: ease,
+              transform: open ? "rotateY(-172deg)" : "rotateY(0deg)",
+            }}
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                background: "linear-gradient(to right, #3a2d1e, #241b11)",
+                boxShadow: "inset 0 1px 0 rgba(243,237,230,0.14)",
+              }}
+            />
+            <span className="absolute right-0 top-1/2 h-[72%] w-[7px] -translate-y-1/2 bg-rose/90" />
+          </div>
+
+          {/* right flap: mirrored */}
+          <div
+            className="absolute right-0 top-0 transition-transform"
+            style={{
+              width: BOX_W / 2,
+              height: BOX_D,
+              transformOrigin: "right",
+              transformStyle: "preserve-3d",
+              transitionDuration: "750ms",
+              transitionTimingFunction: ease,
+              transform: open ? "rotateY(172deg)" : "rotateY(0deg)",
+            }}
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                background: "linear-gradient(to left, #3a2d1e, #241b11)",
+                boxShadow: "inset 0 1px 0 rgba(243,237,230,0.14)",
+              }}
+            />
+            <span className="absolute left-0 top-1/2 h-[72%] w-[7px] -translate-y-1/2 bg-rose/90" />
+          </div>
+        </div>
+      </div>
+
+      {label ? (
+        <span
+          className={`absolute inset-x-0 bottom-[8%] z-20 text-center text-[9px] uppercase tracking-[0.14em] text-muted-ink transition-opacity duration-300 ${
+            open ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          {label}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
 function PhotoIcon({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" fill="none" className={className}>
@@ -217,7 +356,7 @@ function ProductionMedia({ label }: { label: string }) {
       onMouseLeave={() => setHovered(false)}
       className="relative aspect-[4/3] overflow-hidden rounded-sm border border-line"
     >
-      <MediaSlot label={label} className="absolute inset-0">
+      <MediaSlot src={PRODUCTION_IMAGE} label={label} className="absolute inset-0">
         <BoxIcon className="h-14 w-14 text-foreground/30" />
       </MediaSlot>
 
@@ -322,7 +461,7 @@ function BloggerMedia({
           <span>lore.author</span>
           <span>•••</span>
         </div>
-        <MediaSlot className="absolute inset-0">
+        <MediaSlot src={BLOGGER_VIDEO} kind="video" className="absolute inset-0">
           <PhotoIcon className="h-10 w-10 text-foreground/30" />
         </MediaSlot>
         <div className="absolute inset-x-0 bottom-0 z-10 flex items-center gap-4 border-t border-line bg-background/80 px-3 py-2 text-[9px] text-muted-ink">
@@ -366,21 +505,15 @@ function UnboxingMedia({ cta, reveal }: { cta: string; reveal: string }) {
       type="button"
       onClick={handleToggle}
       aria-pressed={open}
-      className="group relative block aspect-[4/3] w-full overflow-hidden rounded-sm border border-line text-left [perspective:600px]"
+      className="group relative block aspect-[4/3] w-full overflow-hidden rounded-sm border border-line text-left"
     >
-      <MediaSlot label={open ? undefined : cta} className="absolute inset-0">
-        <BoxIcon className="h-14 w-14 text-foreground/30" />
-      </MediaSlot>
-
-      <div
-        className="absolute inset-x-0 top-0 z-10 h-[45%] origin-bottom border-b border-line bg-[#221c15] transition-transform duration-500"
-        style={{
-          transform: open
-            ? "rotateX(-125deg) translateY(-10px)"
-            : "rotateX(0deg)",
-          transformStyle: "preserve-3d",
-        }}
+      <MediaSlot
+        src={open ? UNBOXING_VIDEO : undefined}
+        kind="video"
+        className="absolute inset-0"
       />
+
+      <Box3D open={open} label={cta} />
 
       <div
         className={`absolute inset-x-0 bottom-[10%] z-10 flex flex-col items-center gap-1 text-center transition-opacity duration-500 ${
