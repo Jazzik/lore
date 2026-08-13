@@ -17,23 +17,26 @@ export type CaseStudy = {
 export const CASE_STUDIES: readonly CaseStudy[] = [
   {
     id: "vera-osenina",
+    // Настольная игра, розница ≈ 2 800 ₽ — 1 400 × 2 800 = 3,92 млн ₽.
     audience: "310K",
     units: "1 400",
     leadTime: "7 недель",
-    revenue: "4,2 млн ₽",
+    revenue: "3,9 млн ₽",
   },
   {
     id: "dmitry-korshun",
+    // Лимитированный парфюм, розница ≈ 6 500 ₽ — 2 100 × 6 500 = 13,65 млн ₽.
     audience: "540K",
     units: "2 100",
     leadTime: "9 недель",
-    revenue: "6,3 млн ₽",
+    revenue: "13,7 млн ₽",
   },
   {
     id: "milena-grace",
+    // Соус, розница ≈ 650 ₽ — 900 × 650 = 585 тыс. ₽.
     audience: "180K",
     units: "900",
     leadTime: "5 недель",
-    revenue: "2,7 млн ₽",
+    revenue: "585 тыс. ₽",
   },
 ] as const;

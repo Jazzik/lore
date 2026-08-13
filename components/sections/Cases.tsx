@@ -6,7 +6,7 @@ import { CASE_STUDIES } from "@/lib/caseStudies";
 
 export function Cases() {
   const t = useTranslations("cases");
-  const items = t.raw("items") as { id: string; name: string; text: string }[];
+  const items = t.raw("items") as { id: string; num: string; name: string; text: string }[];
 
   return (
     <section
@@ -19,7 +19,7 @@ export function Cases() {
             {t("eyebrow")}
           </span>
         </Reveal>
-        <div className="grid grid-cols-1 border-y border-line sm:grid-cols-3">
+        <div className="grid grid-cols-1 border-l border-t border-line sm:grid-cols-3">
           {items.map((item, i) => {
             const data = CASE_STUDIES.find((c) => c.id === item.id);
             if (!data) return null;
@@ -27,15 +27,16 @@ export function Cases() {
             return (
               <Reveal
                 key={item.id}
-                delay={i * 0.1}
-                className={`border-b border-line px-6 py-10 sm:border-b-0 sm:px-[3.4vw] sm:py-12 ${
-                  i > 0 ? "sm:border-l sm:border-line" : ""
-                }`}
+                delay={i * 0.06}
+                className="border-b border-r border-line p-8"
               >
-                <h3 className="font-serif text-2xl leading-tight">
+                <div className="font-serif text-6xl leading-none">{item.num}</div>
+                <h3 className="mt-6 font-serif text-2xl leading-tight">
                   <em className="italic text-rose">{item.name}</em>
                 </h3>
-                <p className="mt-3 text-xs leading-relaxed text-muted-ink">{item.text}</p>
+                <p className="mt-3 max-w-[300px] text-xs leading-relaxed text-muted-ink">
+                  {item.text}
+                </p>
                 <dl className="mt-7 grid grid-cols-2 gap-x-4 gap-y-5">
                   <div>
                     <dt className="text-[10px] uppercase tracking-[0.16em] text-muted-ink">

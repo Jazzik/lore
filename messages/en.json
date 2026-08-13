@@ -174,9 +174,9 @@
   "cases": {
     "eyebrow": "What we've already built",
     "items": [
-      { "id": "vera-osenina", "name": "Vera Osenina", "text": "A slow-living lifestyle creator launched a board game, Nest — built for phone-free evenings together. The run sold out in three weeks." },
-      { "id": "dmitry-korshun", "name": "Dmitry Korshun", "text": "A travel creator turned his stories from the road into a limited-run fragrance, Azimuth. Every batch sold out before it even shipped." },
-      { "id": "milena-grace", "name": "Milena Grace", "text": "A food creator bottled her signature recipe as a hot sauce, Milena's Fire. The first batch sold out faster than the labels could be printed." }
+      { "id": "vera-osenina", "num": "01", "name": "Vera Osenina", "text": "A slow-living lifestyle creator launched a board game, Nest — built for phone-free evenings together. The run sold out in three weeks." },
+      { "id": "dmitry-korshun", "num": "02", "name": "Dmitry Korshun", "text": "A travel creator turned his stories from the road into a limited-run fragrance, Azimuth. Every batch sold out before it even shipped." },
+      { "id": "milena-grace", "num": "03", "name": "Milena Grace", "text": "A food creator bottled her signature recipe as a hot sauce, Milena's Fire. The first batch sold out faster than the labels could be printed." }
     ],
     "labels": {
       "audience": "Audience",
