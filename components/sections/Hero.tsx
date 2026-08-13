@@ -45,7 +45,7 @@ export function Hero() {
               animate={{ opacity: 0.6 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1.2, ease: "easeInOut" }}
-              className="absolute inset-0 h-full w-full object-cover blur-[2px]"
+              className="absolute inset-0 h-full w-full object-cover"
               autoPlay
               loop
               muted
