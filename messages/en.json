@@ -21,6 +21,7 @@
       "financial-model": "Financial model",
       "market-cases": "Cases",
       "cases": "Our cases",
+      "faq": "FAQ",
       "contact": "Contact"
     }
   },
@@ -185,6 +186,23 @@
       "revenue": "Revenue"
     },
     "leadTimeWeeks": "{n, plural, one {# week} other {# weeks}}"
+  },
+  "faq": {
+    "eyebrow": "Before you reach out",
+    "title": "questions",
+    "titleAccent": "you already have",
+    "items": [
+      { "id": "cost", "q": "How much does it cost, and when do I pay?", "a": "Depends on the model. With the percentage model, you pay nothing upfront — we fund production and launch, you earn a share of every sale. With pre-order, your audience pays before production starts. The exact percentage and terms go into the contract." },
+      { "id": "unsold", "q": "What happens if the product doesn't sell?", "a": "With pre-order, the run isn't printed until enough orders come in — you're never left holding unsold stock. In other models we work out the risk split and write it into the contract before launch." },
+      { "id": "moq", "q": "What's the minimum order quantity?", "a": "300 units for a core line, 100 for a limited capsule drop." },
+      { "id": "leadTime", "q": "How long from kickoff to first shipment?", "a": "5 to 9 weeks, based on our recent projects. It depends on how complex the product and its production are." },
+      { "id": "ownership", "q": "Who owns the brand and the design?", "a": "You do. We put that in the contract at the very start — LORE never holds rights to a product made under your name." },
+      { "id": "payout", "q": "How is my share calculated, and when do payouts happen?", "a": "The percentage and the payout schedule go into the contract before production starts — there's no default number, it's set per project." },
+      { "id": "returns", "q": "What about returns and defects?", "a": "Terms for defects and returns are spelled out in the contract before the run goes into production — so if something goes wrong, everyone already knows who does what." },
+      { "id": "sample", "q": "Can I get a sample before the full run?", "a": "Yes. Before the run goes to print, you get a physical sample and sign off on it yourself — production starts only after your go-ahead." },
+      { "id": "noIdea", "q": "What if I don't have a product idea?", "a": "You don't need to come with one. We look at your audience — who they are, what they care about, what they'd pay for — and suggest a product that fits your brand." },
+      { "id": "audience", "q": "How big does my audience need to be for this to make sense?", "a": "30,000 engaged followers, as a starting point. Past that, reach matters less than how much your audience trusts your picks." }
+    ]
   },
   "contact": {
     "titleLines": ["let's create"],
