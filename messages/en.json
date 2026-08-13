@@ -20,6 +20,7 @@
       "product-discovery": "Product discovery",
       "benefits": "Benefits",
       "financial-model": "Financial model",
+      "calculator": "Calculator",
       "market-cases": "Cases",
       "cases": "Our cases",
       "faq": "FAQ",
@@ -203,6 +204,46 @@
       { "num": "02", "title": "Pre-order", "body": "Sales first, production after. We collect pre-orders from your audience; production starts once the volume is paid." },
       { "num": "03", "title": "Author invests", "body": "You fund the product and keep the revenue. We handle production, logistics and services for a fixed fee." }
     ]
+  },
+  "calculator": {
+    "eyebrow": "Run the numbers",
+    "title": "what you'd",
+    "titleAccent": "actually earn",
+    "body": "Move the sliders to match your audience and average order — the numbers below update instantly, no form to submit.",
+    "controls": {
+      "audience": "Audience size",
+      "averageOrder": "Average order",
+      "model": "Model"
+    },
+    "models": {
+      "percent": "%",
+      "preorder": "Pre-order",
+      "author": "Author invests"
+    },
+    "results": {
+      "buyers": "Buyers",
+      "revenue": "Revenue",
+      "authorIncome": "Your income"
+    },
+    "compact": {
+      "millions": "{v}M",
+      "thousands": "{v}K"
+    },
+    "money": {
+      "millions": "₽{v}M",
+      "thousands": "₽{v}K",
+      "plain": "₽{v}"
+    },
+    "disclaimer": "This is an estimate built on demo conversion assumptions — not an offer or an income guarantee.",
+    "form": {
+      "contactLabel": "Contact for a precise estimate",
+      "submit": "Get the exact numbers",
+      "submitting": "Sending…",
+      "success": "Got it. We'll send an estimate for your audience within one business day.",
+      "error": "Didn't go through. Reach us directly — see the Contact section.",
+      "errorRateLimited": "Too many attempts in a row. Wait a minute and send it again.",
+      "errorContact": "Leave a contact so we can reach you"
+    }
   },
   "marketCases": {
     "eyebrow": "Objects that built brands",

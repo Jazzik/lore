@@ -10,6 +10,7 @@ export const SLIDE_IDS = [
   "product-discovery",
   "benefits",
   "financial-model",
+  "calculator",
   "market-cases",
   "cases",
   "faq",

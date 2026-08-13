@@ -13,6 +13,7 @@ import { ProductDiscovery } from "@/components/sections/ProductDiscovery";
 import { Benefits } from "@/components/sections/Benefits";
 import { Showcase } from "@/components/sections/Showcase";
 import { FinancialModel } from "@/components/sections/FinancialModel";
+import { Calculator } from "@/components/sections/Calculator";
 import { MarketCases } from "@/components/sections/MarketCases";
 import { Cases } from "@/components/sections/Cases";
 import { Faq } from "@/components/sections/Faq";
@@ -48,6 +49,7 @@ export default async function Home({
         <ProductDiscovery />
         <Benefits />
         <FinancialModel />
+        <Calculator />
         <MarketCases />
         <Cases />
         <Faq />
