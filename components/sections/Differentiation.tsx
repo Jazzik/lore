@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
+import { SectionGlow } from "./decor";
 
 const PIPELINE_ICONS = ["✦", "↗", "□", "↗", "◌", "□", "→"];
 
@@ -15,8 +16,9 @@ export function Differentiation() {
   return (
     <section
       id="differentiation"
-      className="flex min-h-svh items-center px-6 py-24 md:px-[8vw]"
+      className="relative flex min-h-svh items-center overflow-hidden px-6 py-24 md:px-[8vw]"
     >
+      <SectionGlow className="-right-40 top-0" />
       <div className="mx-auto w-full max-w-[1380px]">
         <Reveal>
           <h2 className="font-serif text-[clamp(48px,7vw,105px)] leading-[0.85] tracking-[-0.045em]">
