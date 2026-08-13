@@ -35,12 +35,12 @@ export default async function Home({
       <main>
         <Hero />
         <Positioning />
+        <Showcase />
         <Differentiation />
         <Services />
         <Production />
         <ProductDiscovery />
         <Benefits />
-        <Showcase />
         <FinancialModel />
         <MarketCases />
         <Contact />

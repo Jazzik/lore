@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { useUIStore } from "@/store/ui";
 import { ROTATING_CAPTURE_IMAGES } from "@/lib/rotatingCaptureImages";
+import { SLIDE_IDS } from "@/lib/sections";
 
 export function FloatingCapture() {
   const t = useTranslations("floatingCapture");
@@ -16,7 +17,8 @@ export function FloatingCapture() {
   const [sent, setSent] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
-  const visible = activeSlide > 0 && activeSlide < 8 && !dismissed;
+  const contactSlideIndex = SLIDE_IDS.indexOf("contact");
+  const visible = activeSlide > 0 && activeSlide < contactSlideIndex && !dismissed;
 
   useEffect(() => {
     if (!visible) return;
