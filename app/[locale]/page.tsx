@@ -7,6 +7,7 @@ import { Positioning } from "@/components/sections/Positioning";
 import { Differentiation } from "@/components/sections/Differentiation";
 import { Services } from "@/components/sections/Services";
 import { Production } from "@/components/sections/Production";
+import { Quality } from "@/components/sections/Quality";
 import { Journey } from "@/components/sections/Journey";
 import { ProductDiscovery } from "@/components/sections/ProductDiscovery";
 import { Benefits } from "@/components/sections/Benefits";
@@ -42,6 +43,7 @@ export default async function Home({
         <Differentiation />
         <Services />
         <Production />
+        <Quality />
         <Journey />
         <ProductDiscovery />
         <Benefits />
