@@ -34,7 +34,12 @@ export function FloatingCapture() {
   }
 
   const contactSlideIndex = SLIDE_IDS.indexOf("contact");
-  const visible = activeSlide > 0 && activeSlide < contactSlideIndex && !dismissed;
+  const activeSlideId = SLIDE_IDS[activeSlide];
+  // Slides with their own lead-capture form must not also carry this widget —
+  // the two would overlap and compete for the same click.
+  const ownsLeadForm = activeSlideId === "calculator" || activeSlideId === "contact";
+  const visible =
+    activeSlide > 0 && activeSlide < contactSlideIndex && !ownsLeadForm && !dismissed;
 
   useEffect(() => {
     if (!visible) return;

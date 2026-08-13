@@ -52,7 +52,7 @@ function AccordionPanel({ className, children, ...props }: AccordionPrimitive.Pa
     <AccordionPrimitive.Panel
       data-slot="accordion-panel"
       className={cn(
-        "overflow-hidden text-sm leading-relaxed text-muted-ink transition-[height] duration-300 ease-out",
+        "h-[var(--accordion-panel-height)] overflow-hidden text-sm leading-relaxed text-muted-ink transition-[height] duration-300 ease-out data-[ending-style]:h-0 data-[starting-style]:h-0",
         className
       )}
       {...props}

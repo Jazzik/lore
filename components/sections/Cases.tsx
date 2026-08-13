@@ -17,10 +17,14 @@ export function Cases() {
       className="flex min-h-svh items-center px-6 py-24 md:px-[8vw]"
     >
       <div className="mx-auto w-full max-w-[1380px]">
-        <Reveal className="mb-10">
+        <Reveal className="mb-10 max-w-[640px]">
           <span className="text-[10px] uppercase tracking-[0.22em] text-muted-ink">
             {t("eyebrow")}
           </span>
+          <h2 className="mt-4 font-serif text-[clamp(40px,6vw,90px)] leading-[0.9] tracking-[-0.045em] text-foreground">
+            {t("title")}
+            <em className="block italic text-rose">{t("titleAccent")}</em>
+          </h2>
         </Reveal>
         <div className="grid grid-cols-1 border-l border-t border-line sm:grid-cols-3">
           {items.map((item, i) => {

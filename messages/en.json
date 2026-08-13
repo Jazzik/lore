@@ -259,6 +259,8 @@
   "cases": {
     "_demo": "fabricated demo data, replace before publishing",
     "eyebrow": "What we've already built",
+    "title": "not someone else's market —",
+    "titleAccent": "our launches",
     "items": [
       { "id": "vera-osenina", "num": "01", "name": "Vera Osenina", "text": "A slow-living lifestyle creator launched a board game, Nest — built for phone-free evenings together. The run sold out in three weeks." },
       { "id": "dmitry-korshun", "num": "02", "name": "Dmitry Korshun", "text": "A travel creator turned his stories from the road into a limited-run fragrance, Azimuth. Every batch sold out before it even shipped." },
@@ -279,12 +281,12 @@
     "eyebrow": "Who's behind LORE",
     "titleLine": "not an agency —",
     "titleAccent": "a team with factories",
-    "stats": [
-      { "value": 42, "label": "projects launched since 2019" },
-      { "value": 61000, "label": "units produced" },
-      { "value": 6, "label": "factory partners" },
-      { "value": 7, "label": "years in production" }
-    ],
+    "stats": {
+      "projects": "projects launched since 2019",
+      "units": "units produced",
+      "factories": "factory partners",
+      "years": "years in production"
+    },
     "team": {
       "body": "We've been at this since 2019. A founder and producer, a production technologist, and an art director carry every project from idea to shipment themselves — nothing gets handed off between departments. Runs are printed through factory partners we've worked with for years: not a one-off vendor, but a team that already knows how to make your category.",
       "roles": ["Founder and producer", "Production technologist", "Art director"]

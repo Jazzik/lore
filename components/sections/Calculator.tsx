@@ -4,14 +4,16 @@ import { useMemo, useState } from "react";
 import type { FormEvent } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { DEMO_CONVERSION_RATE, estimate, type Model } from "@/lib/economics";
 import { compactScale } from "@/lib/compactNumber";
 
 const MODELS: Model[] = ["percent", "preorder", "author"];
 
-const AUDIENCE_MIN = 1_000;
+// Нижняя граница слайдера совпадает с порогом FAQ («от 30 000 вовлечённых
+// подписчиков») — калькулятор не должен предлагать аудитории, при которых
+// FAQ считает проект нежизнеспособным.
+const AUDIENCE_MIN = 30_000;
 const AUDIENCE_MAX = 1_000_000;
 const ORDER_MIN = 500;
 const ORDER_MAX = 15_000;
@@ -37,7 +39,9 @@ export function Calculator() {
   const t = useTranslations("calculator");
   const format = useFormatter();
 
-  const [audience, setAudience] = useState(50_000);
+  // 80 000 при демо-конверсии 0.5% даёт 400 покупателей — выше минимального
+  // тиража в 300 единиц, о котором говорит FAQ.
+  const [audience, setAudience] = useState(80_000);
   const [averageOrder, setAverageOrder] = useState(3_000);
   const [model, setModel] = useState<Model>("percent");
   const [contact, setContact] = useState("");
@@ -82,6 +86,11 @@ export function Calculator() {
   const revenueCompact = compactScale(result.revenue);
   const incomeCompact = compactScale(result.authorIncome);
 
+  const audienceDisplay = t(`compact.${audienceCompact.scale}`, {
+    v: format.number(audienceCompact.value, { maximumFractionDigits: 1 }),
+  });
+  const averageOrderDisplay = t("money.plain", { v: format.number(averageOrder) });
+
   return (
     <section
       id="calculator"
@@ -108,11 +117,7 @@ export function Calculator() {
                 <span className="text-[10px] uppercase tracking-[0.16em] text-muted-ink">
                   {t("controls.audience")}
                 </span>
-                <span className="font-serif text-2xl">
-                  {t(`compact.${audienceCompact.scale}`, {
-                    v: format.number(audienceCompact.value, { maximumFractionDigits: 1 }),
-                  })}
-                </span>
+                <span className="font-serif text-2xl">{audienceDisplay}</span>
               </div>
               <input
                 type="range"
@@ -122,7 +127,7 @@ export function Calculator() {
                 value={audienceToSlider(audience)}
                 onChange={(e) => setAudience(sliderToAudience(Number(e.target.value)))}
                 aria-label={t("controls.audience")}
-                aria-valuetext={String(audience)}
+                aria-valuetext={audienceDisplay}
                 className="w-full accent-rose"
               />
             </div>
@@ -132,9 +137,7 @@ export function Calculator() {
                 <span className="text-[10px] uppercase tracking-[0.16em] text-muted-ink">
                   {t("controls.averageOrder")}
                 </span>
-                <span className="font-serif text-2xl">
-                  {t("money.plain", { v: format.number(averageOrder) })}
-                </span>
+                <span className="font-serif text-2xl">{averageOrderDisplay}</span>
               </div>
               <input
                 type="range"
@@ -144,36 +147,41 @@ export function Calculator() {
                 value={averageOrder}
                 onChange={(e) => setAverageOrder(Number(e.target.value))}
                 aria-label={t("controls.averageOrder")}
-                aria-valuetext={String(averageOrder)}
+                aria-valuetext={averageOrderDisplay}
                 className="w-full accent-rose"
               />
             </div>
 
-            <div>
+            <div role="group" aria-label={t("controls.model")}>
               <span className="mb-3 block text-[10px] uppercase tracking-[0.16em] text-muted-ink">
                 {t("controls.model")}
               </span>
-              <Tabs value={model} onValueChange={(v) => setModel(v as Model)}>
-                <TabsList
-                  variant="line"
-                  className="h-auto justify-start gap-6 rounded-none border-b border-line bg-transparent p-0"
-                >
-                  {MODELS.map((key) => (
-                    <TabsTrigger
-                      key={key}
-                      value={key}
-                      className="rounded-none border-0 bg-transparent px-0 pb-3 text-[10px] uppercase tracking-[0.17em] text-muted-ink shadow-none data-active:bg-transparent data-active:text-foreground data-active:shadow-none after:bottom-0! after:bg-rose"
-                    >
-                      {t(`models.${key}`)}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
-              </Tabs>
+              <div className="flex items-center gap-6 border-b border-line">
+                {MODELS.map((key) => (
+                  <button
+                    key={key}
+                    type="button"
+                    aria-pressed={model === key}
+                    onClick={() => setModel(key)}
+                    className={`relative border-0 bg-transparent px-0 pb-3 text-[10px] uppercase tracking-[0.17em] transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-rose after:opacity-0 after:transition-opacity ${
+                      model === key
+                        ? "text-foreground after:opacity-100"
+                        : "text-muted-ink hover:text-foreground"
+                    }`}
+                  >
+                    {t(`models.${key}`)}
+                  </button>
+                ))}
+              </div>
             </div>
           </Reveal>
 
           <Reveal delay={0.15} className="border border-line bg-paper p-8 md:p-10">
-            <dl className="grid grid-cols-2 gap-x-6 gap-y-6">
+            <dl
+              className="grid grid-cols-2 gap-x-6 gap-y-6"
+              aria-live="polite"
+              aria-atomic="true"
+            >
               <div>
                 <dt className="text-[10px] uppercase tracking-[0.16em] text-muted-ink">
                   {t("results.buyers")}

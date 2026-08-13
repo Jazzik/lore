@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
 import { scrollToSection } from "@/lib/scrollToSection";
+import { track } from "@/lib/analytics";
 import { QUALITY_IMAGES } from "@/lib/qualityImages";
 
 export function Quality() {
@@ -108,7 +109,10 @@ export function Quality() {
           </div>
           <button
             type="button"
-            onClick={() => scrollToSection("contact")}
+            onClick={() => {
+              track("cta_click", { placement: "quality-sample" });
+              scrollToSection("contact");
+            }}
             className="shrink-0 self-start border-0 border-b border-line bg-transparent pb-[5px] text-[11px] uppercase tracking-[0.16em] text-foreground transition-colors hover:text-rose md:self-auto"
           >
             {t("sample.cta")}

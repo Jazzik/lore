@@ -12,11 +12,16 @@ export type Estimate = {
 };
 
 /** Доля автора по каждой модели: растёт вместе с долей риска, который берёт
- *  на себя автор (см. financialModel.columns). */
+ *  на себя автор (см. financialModel.columns). В модели "author" автор сам
+ *  финансирует производство и получает выручку, а LORE берёт фиксированный
+ *  процент за производство/логистику/сервисы (см. financialModel.columns[2]
+ *  в messages) — значит доля LORE здесь должна быть меньшинством, а не
+ *  половиной, иначе автор, взявший на себя весь финансовый риск, получает
+ *  тот же исход, что и при риске, разделённом с LORE. */
 const AUTHOR_SHARE: Record<Model, number> = {
   percent: 0.15,
   preorder: 0.25,
-  author: 0.5,
+  author: 0.8,
 };
 
 export function estimate(input: {

@@ -6,11 +6,12 @@
 
 import { useFormatter, useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
+import { COMPANY_STATS } from "@/lib/companyStats";
 
 export function About() {
   const t = useTranslations("about");
   const format = useFormatter();
-  const stats = t.raw("stats") as { value: number; label: string }[];
+  const statLabels = t.raw("stats") as Record<string, string>;
   const roles = t.raw("team.roles") as string[];
 
   return (
@@ -34,12 +35,14 @@ export function About() {
           delay={0.08}
           className="grid grid-cols-2 gap-8 border-l border-t border-line sm:grid-cols-4"
         >
-          {stats.map((stat, i) => (
-            <div key={i} className="border-b border-r border-line p-8">
+          {COMPANY_STATS.map((stat) => (
+            <div key={stat.id} className="border-b border-r border-line p-8">
               <div className="font-serif text-5xl leading-none text-foreground md:text-6xl">
                 {format.number(stat.value)}
               </div>
-              <div className="mt-3 text-xs leading-relaxed text-muted-ink">{stat.label}</div>
+              <div className="mt-3 text-xs leading-relaxed text-muted-ink">
+                {statLabels[stat.id]}
+              </div>
             </div>
           ))}
         </Reveal>
