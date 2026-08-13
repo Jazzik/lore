@@ -1,0 +1,103 @@
+Title,Description,Status,Priority,Labels,Estimate
+P0 · Модуль контактов и env-конфиг,"Установить зависимости, прочитать доки Next 16 по Route Handlers, создать lib/contacts.ts как единственный источник правды по WhatsApp/Telegram/email, завести .env.example.
+
+План: `docs/superpowers/plans/2026-08-13-lead-capture-and-analytics.md` → Task 1
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: номер WhatsApp, Telegram-хэндл, email",Todo,Urgent,"P0,backend,setup",2
+P0 · Валидация заявки,"lib/leadPayload.ts: типы LeadPayload/LeadChannel и чистая функция validateLead(), общая для клиента и сервера. Плюс isBot() для honeypot. Без zod — ноль новых зависимостей.
+
+План: `docs/superpowers/plans/2026-08-13-lead-capture-and-analytics.md` → Task 2
+Полные шаги, код и критерии приёмки — в плане.",Todo,Urgent,"P0,backend",2
+P0 · Rate limit и доставка в Telegram,"lib/rateLimit.ts — in-memory скользящее окно по IP (5 запросов в минуту). lib/telegram.ts — отправка заявки через Bot API с экранированием HTML.
+
+План: `docs/superpowers/plans/2026-08-13-lead-capture-and-analytics.md` → Task 3
+Полные шаги, код и критерии приёмки — в плане.",Todo,Urgent,"P0,backend",3
+P0 · Route Handler POST /api/lead,"app/api/lead/route.ts: валидация → honeypot → rate limit → Telegram. Контракт: 200/400/429/500. Ручная проверка всех четырёх веток через curl, включая реальную доставку сообщения.
+
+План: `docs/superpowers/plans/2026-08-13-lead-capture-and-analytics.md` → Task 4
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID",Todo,Urgent,"P0,backend",3
+P0 · Хук отправки и строки состояний форм,"components/forms/useLeadSubmit.ts на @tanstack/react-query (провайдер уже смонтирован, но не использовался). Плюс RU/EN копия для состояний loading/success/error и ошибок полей.
+
+План: `docs/superpowers/plans/2026-08-13-lead-capture-and-analytics.md` → Task 5
+Полные шаги, код и критерии приёмки — в плане.",Todo,Urgent,"P0,frontend,i18n",3
+P0 · Оживить обе формы и футер,"Contact.tsx: контролируемые табы (активный таб = канал заявки), одна форма вместо трёх идентичных копий, honeypot, состояния, ошибки полей. Кликабельные ссылки WhatsApp/Telegram/email в футере. FloatingCapture.tsx: убрать фальшивый setSent(true), подключить реальную отправку.
+
+План: `docs/superpowers/plans/2026-08-13-lead-capture-and-analytics.md` → Task 6
+Полные шаги, код и критерии приёмки — в плане.
+⛔ Блокируется: Task 5",Todo,Urgent,"P0,frontend",5
+P0 · Яндекс.Метрика и события воронки,"lib/analytics.ts — безопасная обёртка track(). YandexMetrika.tsx через next/script с вебвизором. События: lead_submitted, lead_failed, cta_click. Без счётчика страница должна работать штатно.
+
+План: `docs/superpowers/plans/2026-08-13-lead-capture-and-analytics.md` → Task 7
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: номер счётчика Метрики",Todo,Urgent,"P0,analytics",3
+P0 · Приёмка,"tsc + eslint + i18n-parity + build. Прогон обеих локалей в браузере с реальной отправкой. Проверка, что секреты не утекли в репозиторий.
+
+План: `docs/superpowers/plans/2026-08-13-lead-capture-and-analytics.md` → Task 8
+Полные шаги, код и критерии приёмки — в плане.
+⛔ Блокируется: все задачи P0",Todo,Urgent,"P0,qa",2
+P1 · Секция собственных кейсов,"lib/caseStudies.ts (цифры отдельно от переводимой копии) + components/sections/Cases.tsx через skill new-section, позиция после market-cases. Сейчас сайт показывает только чужие бренды — Rhode, Chamberlain, Skims — как доказательство своей компетенции.
+
+План: `docs/superpowers/plans/2026-08-13-trust-and-conversion-sections.md` → Task 1
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: реальные кейсы с цифрами и разрешением на публикацию имени",Todo,High,"P1,content,trust",5
+P1 · FAQ,"10 вопросов, снимающих подтверждённые возражения: цена, что если не продастся, минимальный тираж, сроки, права на бренд, расчёт доли, возвраты, образец. FAQ есть у обоих прямых RU-конкурентов и у Fourthwall — у LORE нет. Самая дешёвая задача с самым большим эффектом.
+
+План: `docs/superpowers/plans/2026-08-13-trust-and-conversion-sections.md` → Task 2
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: коммерческие условия для ответов",Todo,High,"P1,content,trust",3
+P1 · Убрать противоречие в витрине,"Позиционирование говорит «устали от футболок с логотипом», а showcase перечисляет худи/кепку/термокружку/тоут — ровно тот generic-мерч. Страница спорит сама с собой. Заменить на нестандартные объекты, переписать body, синхронизировать длину SHOWCASE_VIDEOS.
+
+План: `docs/superpowers/plans/2026-08-13-trust-and-conversion-sections.md` → Task 3
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: согласованный список объектов, которые LORE реально может произвести",Todo,High,"P1,content,positioning",3
+P1 · Секция качества и материалов,"Главный страх автора — выцветший принт и кривой шов под его именем. Макро-фото, названия материалов и технологий, что проверяем перед отгрузкой, бесплатный образец до тиража (этим бьёт конкурент Showcase).
+
+План: `docs/superpowers/plans/2026-08-13-trust-and-conversion-sections.md` → Task 4
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: реальные фото производства, названия материалов",Todo,High,"P1,content,trust",3
+P1 · Калькулятор дохода автора,"lib/economics.ts — чистая формула, отдельно от UI. components/sections/Calculator.tsx — ползунки аудитории и чека, выбор финмодели, результат крупно. Конверсия скрыта: иначе посетитель накрутит себе любую цифру. Отправка заявки с параметрами расчёта.
+
+План: `docs/superpowers/plans/2026-08-13-trust-and-conversion-sections.md` → Task 5
+Полные шаги, код и критерии приёмки — в плане.
+⛔ Блокируется: P0 Task 5
+📥 Нужны данные от заказчика: реальная конверсия, средний чек, доля автора по трём моделям",Todo,High,"P1,frontend,conversion",5
+P1 · Секция «Кто мы»,"3–4 числа о себе крупно + команда + производство + юрлицо. Ровно то, что есть у Fourthwall (500k креаторов, 4 дня доставка) и Genflow ($300M+, 250 клиентов) и чего у LORE нет вообще.
+
+План: `docs/superpowers/plans/2026-08-13-trust-and-conversion-sections.md` → Task 6
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: состав команды, год основания, юрлицо, цифры",Todo,High,"P1,content,trust",3
+P1 · Приёмка,"tsc + eslint + i18n-parity + build. Проверить совпадение порядка SLIDE_IDS, элементов в page.tsx и namespace'ов в messages. Прогон всей деки из 17 секций на 1280px и 375px.
+
+План: `docs/superpowers/plans/2026-08-13-trust-and-conversion-sections.md` → Task 7
+Полные шаги, код и критерии приёмки — в плане.
+⛔ Блокируется: все задачи P1",Todo,High,"P1,qa",2
+P2 · SEO-пакет,"sitemap.ts, robots.ts, opengraph-image.tsx через встроенный ImageResponse, metadataBase, alternates.languages, JSON-LD Organization. Сейчас ссылка на сайт в Telegram разворачивается голым текстом без картинки — а это основной канал для этой аудитории.
+
+План: `docs/superpowers/plans/2026-08-13-growth-seo-and-legal.md` → Task 1
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: боевой домен",Todo,Medium,"P2,seo",5
+P2 · Секция про запуск и прогрев,"Единственный аргумент, отделяющий LORE от Fourthwall и Spring: те дают витрину, но не дают продаж. Четыре фазы дропа по образцу Journey. Кейс Rhode на сайте уже описан именно так — «год прогрева сформировал отложенный спрос», но нигде не обещано, что это делаем мы.
+
+План: `docs/superpowers/plans/2026-08-13-growth-seo-and-legal.md` → Task 2
+Полные шаги, код и критерии приёмки — в плане.",Todo,Medium,"P2,content,positioning",3
+P2 · Квиз подбора продукта,"lib/quizSteps.ts + quizReducer.ts + Quiz.tsx, встроить в ProductDiscovery (не новая секция — это исполнение обещания, которое секция уже даёт). Четыре вопроса, на финале — контакт, в Telegram уходит готовый бриф.
+
+План: `docs/superpowers/plans/2026-08-13-growth-seo-and-legal.md` → Task 3
+Полные шаги, код и критерии приёмки — в плане.
+⛔ Блокируется: P0 Task 5",Todo,Medium,"P2,frontend,conversion",5
+P2 · Самохостинг медиа и постеры,"Первый экран тянет три видео с static.higgsfield.ai — чужого CDN. Единственная внешняя зависимость рантайма на всём лендинге, и она стоит в hero. Заменить своей съёмкой или захостить у себя, добавить poster (сейчас до загрузки виден чёрный прямоугольник).
+
+План: `docs/superpowers/plans/2026-08-13-growth-seo-and-legal.md` → Task 4
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: решение по правам на текущие ролики",Todo,Medium,"P2,perf,media",3
+P2 · Оферта и политика ПД,"LORE принимает оплату и выплачивает долю авторам, форма собирает перс. данные — юридических страниц нет. Два маршрута вне слайд-деки, noindex, ссылки под формой и в футере, записи в sitemap. Тексты пишет юрист, не разработчик.
+
+План: `docs/superpowers/plans/2026-08-13-growth-seo-and-legal.md` → Task 5
+Полные шаги, код и критерии приёмки — в плане.
+📥 Нужны данные от заказчика: тексты оферты и политики от юриста, реквизиты юрлица",Todo,Medium,"P2,legal",3
+P2 · Приёмка,"tsc + eslint + i18n-parity + build. Проверка sitemap (6 URL), robots, OG-тегов и hreflang на собранном приложении. Валидация превью ссылки.
+
+План: `docs/superpowers/plans/2026-08-13-growth-seo-and-legal.md` → Task 6
+Полные шаги, код и критерии приёмки — в плане.
+⛔ Блокируется: все задачи P2",Todo,Medium,"P2,qa",2
