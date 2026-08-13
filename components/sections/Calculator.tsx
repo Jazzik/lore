@@ -7,6 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { DEMO_CONVERSION_RATE, estimate, type Model } from "@/lib/economics";
+import { compactScale } from "@/lib/compactNumber";
 
 const MODELS: Model[] = ["percent", "preorder", "author"];
 
@@ -30,15 +31,6 @@ function audienceToSlider(audience: number) {
   const maxLog = Math.log10(AUDIENCE_MAX);
   const clamped = Math.min(Math.max(audience, AUDIENCE_MIN), AUDIENCE_MAX);
   return ((Math.log10(clamped) - minLog) / (maxLog - minLog)) * 100;
-}
-
-// Компактные числа собираются вручную, а не через Intl с
-// notation: "compact" — см. Cases.tsx. ICU в Node и в браузере расходятся на
-// этом формате и React роняет гидрацию на несовпадении разметки.
-function compact(value: number) {
-  return value >= 1_000_000
-    ? { scale: "millions" as const, value: value / 1_000_000 }
-    : { scale: "thousands" as const, value: value / 1_000 };
 }
 
 export function Calculator() {
@@ -86,9 +78,9 @@ export function Calculator() {
     );
   }
 
-  const audienceCompact = compact(audience);
-  const revenueCompact = compact(result.revenue);
-  const incomeCompact = compact(result.authorIncome);
+  const audienceCompact = compactScale(audience);
+  const revenueCompact = compactScale(result.revenue);
+  const incomeCompact = compactScale(result.authorIncome);
 
   return (
     <section

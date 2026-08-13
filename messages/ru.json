@@ -227,7 +227,8 @@
     },
     "compact": {
       "millions": "{v} млн",
-      "thousands": "{v} тыс."
+      "thousands": "{v} тыс.",
+      "plain": "{v}"
     },
     "money": {
       "millions": "{v} млн ₽",
@@ -267,8 +268,8 @@
       "revenue": "Выручка"
     },
     "leadTimeWeeks": "{n, plural, one {# неделя} few {# недели} other {# недель}}",
-    "compact": { "millions": "{v} млн", "thousands": "{v} тыс." },
-    "money": { "millions": "{v} млн ₽", "thousands": "{v} тыс. ₽" }
+    "compact": { "millions": "{v} млн", "thousands": "{v} тыс.", "plain": "{v}" },
+    "money": { "millions": "{v} млн ₽", "thousands": "{v} тыс. ₽", "plain": "{v} ₽" }
   },
   "faq": {
     "eyebrow": "Прежде чем написать",
