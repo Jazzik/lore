@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
-import { CharacterPlaceholder } from "./decor";
+import { Quiz } from "@/components/quiz/Quiz";
 
 export function ProductDiscovery() {
   const t = useTranslations("productDiscovery");
@@ -47,8 +47,12 @@ export function ProductDiscovery() {
             <em className="italic text-rose">{t("bottomAccent")}</em>
           </div>
         </Reveal>
+        {/* The quiz replaces the decorative placeholder that used to sit here:
+            this section already promises "we'll work out what you should sell",
+            and the quiz is that promise starting on the page instead of being
+            deferred to a contact form. */}
         <Reveal delay={0.15}>
-          <CharacterPlaceholder />
+          <Quiz />
         </Reveal>
       </div>
     </section>
