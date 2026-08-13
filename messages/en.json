@@ -96,30 +96,31 @@
   },
   "quality": {
     "eyebrow": "Materials & quality control",
-    "titleLines": ["every stitch"],
-    "titleAccent": "as if it were ours",
-    "body": "A crooked seam or a faded print is a hit to your reputation, not ours. So we choose fabric and print the way we would for our own brand.",
+    "titleLines": ["nothing crooked"],
+    "titleAccent": "under your name",
+    "body": "Cracked glass, a crooked label, or a dented box is a hit to your reputation, not ours. So we choose materials and print the way we would for our own brand.",
     "materials": {
       "title": "What it's made of",
       "items": [
-        { "name": "Hoodies & sweatshirts", "spec": "320 gsm loopback fleece, brushed inside" },
-        { "name": "T-shirts", "spec": "180 gsm combed cotton jersey, 100% cotton" },
-        { "name": "Print", "spec": "Plastisol screen printing for large runs, DTF transfer for small batches" },
-        { "name": "Embroidery", "spec": "Chain-stitch on chest and sleeve, up to 8 colors" }
+        { "name": "Board games", "spec": "350 gsm coated cardboard box, offset print with soft-touch lamination" },
+        { "name": "Fragrance & cosmetics", "spec": "glass bottle, 15–20% eau de parfum concentration" },
+        { "name": "Sauces & food", "spec": "food-grade bottling, tamper-evident cap" },
+        { "name": "Books & print", "spec": "150 gsm coated paper, hardcover with sewn binding" },
+        { "name": "Apparel", "spec": "320 gsm loopback fleece and 180 gsm combed cotton jersey, plastisol screen printing and DTF transfer" }
       ]
     },
     "checks": {
       "title": "What we check before shipping",
       "items": [
-        { "num": "01", "title": "Fabric weight", "body": "We measure every batch before purchase — grammage can't drift between deliveries." },
-        { "num": "02", "title": "Print registration", "body": "Layer misalignment tolerance is under 0.5 mm." },
-        { "num": "03", "title": "Shrinkage after wash", "body": "We test a sample through three wash cycles before the full run." },
-        { "num": "04", "title": "Seams and stitching", "body": "Every tenth unit in a batch gets a manual check for crooked stitching and loose trim." }
+        { "num": "01", "title": "Material density", "body": "We measure cardboard, glass, or fabric weight in every batch — it can't drift between deliveries." },
+        { "num": "02", "title": "Print registration", "body": "Layer misalignment tolerance is under 0.5 mm, whether it's a label, a cover, or a t-shirt." },
+        { "num": "03", "title": "Seal & durability", "body": "Bottles get checked for leaks, boxes for compression and drop resistance." },
+        { "num": "04", "title": "Manual assembly check", "body": "Every tenth unit in a batch gets a manual check: a warped box, a peeling label, crooked stitching." }
       ]
     },
     "sample": {
       "title": "Free sample before the print run",
-      "body": "Before we print the full run, we sew and print one sample on the real materials and send it to you — to check by hand, not by photo.",
+      "body": "Before we commit to the full run, we make one sample on the real materials and send it to you — to check by hand, not by photo.",
       "cta": "Request a sample"
     },
     "imageAlt": "LORE product sample"
