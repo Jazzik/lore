@@ -1,0 +1,46 @@
+"use client";
+
+import { useMutation } from "@tanstack/react-query";
+import type { LeadPayload } from "@/lib/leadPayload";
+
+type ApiResponse = {
+  ok: boolean;
+  errors?: Partial<Record<string, string>>;
+  error?: string;
+};
+
+async function postLead(payload: LeadPayload): Promise<ApiResponse> {
+  const res = await fetch("/api/lead", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  const data = (await res.json().catch(() => ({ ok: false }))) as ApiResponse;
+
+  if (!res.ok || !data.ok) {
+    const err = new Error(data.error ?? "request_failed") as Error & {
+      fieldErrors?: Partial<Record<string, string>>;
+    };
+    err.fieldErrors = data.errors;
+    throw err;
+  }
+
+  return data;
+}
+
+export function useLeadSubmit() {
+  const mutation = useMutation({ mutationFn: postLead });
+
+  const fieldErrors =
+    (mutation.error as (Error & { fieldErrors?: Partial<Record<string, string>> }) | null)
+      ?.fieldErrors ?? {};
+
+  // react-query v5 отдаёт ровно эти четыре значения — пробрасываем как есть.
+  return {
+    submit: mutation.mutate,
+    status: mutation.status,
+    fieldErrors,
+    reset: mutation.reset,
+  } as const;
+}
