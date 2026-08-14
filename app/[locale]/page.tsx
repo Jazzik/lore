@@ -7,12 +7,18 @@ import { Positioning } from "@/components/sections/Positioning";
 import { Differentiation } from "@/components/sections/Differentiation";
 import { Services } from "@/components/sections/Services";
 import { Production } from "@/components/sections/Production";
+import { Quality } from "@/components/sections/Quality";
 import { Journey } from "@/components/sections/Journey";
+import { Launch } from "@/components/sections/Launch";
 import { ProductDiscovery } from "@/components/sections/ProductDiscovery";
 import { Benefits } from "@/components/sections/Benefits";
 import { Showcase } from "@/components/sections/Showcase";
 import { FinancialModel } from "@/components/sections/FinancialModel";
+import { Calculator } from "@/components/sections/Calculator";
 import { MarketCases } from "@/components/sections/MarketCases";
+import { Cases } from "@/components/sections/Cases";
+import { About } from "@/components/sections/About";
+import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
 import { FloatingCapture } from "@/components/widgets/FloatingCapture";
 import { LiveCounter } from "@/components/widgets/LiveCounter";
@@ -40,11 +46,17 @@ export default async function Home({
         <Differentiation />
         <Services />
         <Production />
+        <Quality />
         <Journey />
+        <Launch />
         <ProductDiscovery />
         <Benefits />
         <FinancialModel />
+        <Calculator />
         <MarketCases />
+        <Cases />
+        <About />
+        <Faq />
         <Contact />
       </main>
       <FloatingCapture />

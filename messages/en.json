@@ -15,11 +15,17 @@
       "differentiation": "Difference",
       "services": "What we take on",
       "production": "Production",
+      "quality": "Quality",
       "journey": "Product journey",
+    "launch": "Launch",
       "product-discovery": "Product discovery",
       "benefits": "Benefits",
       "financial-model": "Financial model",
+      "calculator": "Calculator",
       "market-cases": "Cases",
+      "cases": "Our cases",
+      "about": "About",
+      "faq": "FAQ",
       "contact": "Contact"
     }
   },
@@ -91,6 +97,38 @@
     "body": "We handle the entire path of the product — from development to delivery.",
     "items": ["Development", "Manufacturing", "Packaging", "Quality control", "Delivery"]
   },
+  "quality": {
+    "_demo": "fabricated demo data, replace before publishing",
+    "eyebrow": "Materials & quality control",
+    "titleLines": ["nothing crooked"],
+    "titleAccent": "under your name",
+    "body": "Cracked glass, a crooked label, or a dented box is a hit to your reputation, not ours. So we choose materials and print the way we would for our own brand.",
+    "materials": {
+      "title": "What it's made of",
+      "items": [
+        { "name": "Board games", "spec": "350 gsm coated cardboard box, offset print with soft-touch lamination" },
+        { "name": "Fragrance & cosmetics", "spec": "glass bottle, 15–20% eau de parfum concentration" },
+        { "name": "Sauces & food", "spec": "food-grade bottling, tamper-evident cap" },
+        { "name": "Books & print", "spec": "150 gsm coated paper, hardcover with sewn binding" },
+        { "name": "Apparel", "spec": "320 gsm loopback fleece and 180 gsm combed cotton jersey, plastisol screen printing and DTF transfer" }
+      ]
+    },
+    "checks": {
+      "title": "What we check before shipping",
+      "items": [
+        { "num": "01", "title": "Material density", "body": "We measure cardboard, glass, or fabric weight in every batch — it can't drift between deliveries." },
+        { "num": "02", "title": "Print registration", "body": "Layer misalignment tolerance is under 0.5 mm, whether it's a label, a cover, or a t-shirt." },
+        { "num": "03", "title": "Seal & durability", "body": "Bottles get checked for leaks, boxes for compression and drop resistance." },
+        { "num": "04", "title": "Manual assembly check", "body": "Every tenth unit in a batch gets a manual check: a warped box, a peeling label, crooked stitching." }
+      ]
+    },
+    "sample": {
+      "title": "Free sample before the print run",
+      "body": "Before we commit to the full run, we make one sample on the real materials and send it to you — to check by hand, not by photo.",
+      "cta": "Request a sample"
+    },
+    "imageAlt": "LORE product sample"
+  },
   "journey": {
     "eyebrow": "From the floor to the doorstep",
     "titleLines": ["the product's"],
@@ -122,6 +160,46 @@
       }
     ]
   },
+  "launch": {
+    "eyebrow": "Launch",
+    "titleLines": ["a quiet launch", "sells nothing"],
+    "titleAccent": "a drop needs a script",
+    "body": "A storefront is not sales. Sales start weeks before the buy button and do not end at delivery. A merch builder hands you a shop link and walks away. We run the whole performance.",
+    "authorLabel": "You",
+    "loreLabel": "Us",
+    "phases": [
+      {
+        "num": "01",
+        "when": "while production runs",
+        "title": "Warm-up",
+        "author": "You show the process: sketches, first samples, the material you picked, the versions you rejected. Your audience takes part in the decisions and waits for the result.",
+        "lore": "We shoot the product, build a content plan around the date and put the waitlist page live."
+      },
+      {
+        "num": "02",
+        "when": "announcement day",
+        "title": "Announcement and pre-orders",
+        "author": "You name the date and open pre-orders — one post you have been building towards for weeks.",
+        "lore": "We take payments, measure real demand and set the production run from actual orders instead of a guess."
+      },
+      {
+        "num": "03",
+        "when": "the sales window",
+        "title": "Selling",
+        "author": "You stay in daily contact: how much is left, answers in stories, rising urgency as the window closes.",
+        "lore": "We watch stock, pick and ship every order, and answer buyers so you do not have to."
+      },
+      {
+        "num": "04",
+        "when": "after delivery",
+        "title": "Second round",
+        "author": "You collect your buyers' unboxings — they become the advertising for the next drop.",
+        "lore": "We handle returns and exchanges, pull the sales data together and propose what the second release should be."
+      }
+    ],
+    "statement": "A storefront without a warm-up is a warehouse",
+    "statementAccent": "nobody knows about"
+  },
   "productDiscovery": {
     "titleLines": ["don't know"],
     "titleAccent": "what to sell?",
@@ -135,6 +213,63 @@
     ],
     "bottomLines": ["we'll figure out"],
     "bottomAccent": "what you should actually be selling"
+  },
+  "quiz": {
+    "progress": "Step {current} of {total}",
+    "back": "Back",
+    "resultKicker": "Done",
+    "resultTitle": "That's already enough to start",
+    "resultBody": "Leave a contact and we'll come back with two or three concrete product ideas for your audience, with the economics worked out for each.",
+    "steps": {
+      "niche": {
+        "question": "What is your channel about?",
+        "short": "Niche",
+        "options": {
+          "beauty": "Beauty and skincare",
+          "lifestyle": "Lifestyle and fashion",
+          "gaming": "Gaming and tech",
+          "education": "Education and expertise",
+          "other": "Something else"
+        }
+      },
+      "audience": {
+        "question": "How many followers do you have?",
+        "short": "Audience",
+        "options": {
+          "lt50k": "Under 50 thousand",
+          "50k-200k": "50–200 thousand",
+          "200k-1m": "200 thousand — 1 million",
+          "gt1m": "Over a million"
+        }
+      },
+      "engagement": {
+        "question": "How does your audience react to your recommendations?",
+        "short": "Engagement",
+        "options": {
+          "low": "They watch, but rarely buy",
+          "medium": "They buy what I recommend",
+          "high": "They clear out everything I show"
+        }
+      },
+      "budget": {
+        "question": "Are you ready to invest money up front?",
+        "short": "Budget",
+        "options": {
+          "none": "No — I want a share with no investment",
+          "some": "I can cover part of it",
+          "ready": "I'm ready to fund the run myself"
+        }
+      }
+    },
+    "form": {
+      "contactLabel": "Telegram or email",
+      "submit": "Get product ideas",
+      "submitting": "Sending…",
+      "success": "Got it. We'll come back with ideas within a day.",
+      "error": "Didn't go through. Try again or message us on Telegram.",
+      "errorRateLimited": "Too many requests in a row. Try again in a minute.",
+      "errorContact": "Leave a Telegram handle or email"
+    }
   },
   "benefits": {
     "items": [
@@ -150,8 +285,16 @@
     "eyebrow": "Product showcase",
     "titleLines": ["what we"],
     "titleAccent": "can build",
-    "body": "From hoodies to tumblers — any merch format that fits the creator's brand.",
-    "items": ["Hoodie", "Cap", "Tumbler", "Tote bag", "Poster", "Pin set", "Candle"]
+    "body": "Not a logo on a t-shirt — an object that earns its place on its own.",
+    "items": [
+      "Board game",
+      "Fragrance",
+      "Hot sauce",
+      "Book",
+      "Lamp",
+      "Skate deck",
+      "Care kit"
+    ]
   },
   "financialModel": {
     "kicker": "financial",
@@ -162,12 +305,108 @@
       { "num": "03", "title": "Author invests", "body": "You fund the product and keep the revenue. We handle production, logistics and services for a fixed fee." }
     ]
   },
+  "calculator": {
+    "eyebrow": "Run the numbers",
+    "title": "what you'd",
+    "titleAccent": "actually earn",
+    "body": "Move the sliders to match your audience and average order — the numbers below update instantly, no form to submit.",
+    "controls": {
+      "audience": "Audience size",
+      "averageOrder": "Average order",
+      "model": "Model"
+    },
+    "models": {
+      "percent": "%",
+      "preorder": "Pre-order",
+      "author": "Author invests"
+    },
+    "results": {
+      "buyers": "Buyers",
+      "revenue": "Revenue",
+      "authorIncome": "Your income"
+    },
+    "compact": {
+      "millions": "{v}M",
+      "thousands": "{v}K",
+      "plain": "{v}"
+    },
+    "money": {
+      "millions": "₽{v}M",
+      "thousands": "₽{v}K",
+      "plain": "₽{v}"
+    },
+    "disclaimer": "This is an estimate built on demo conversion assumptions — not an offer or an income guarantee.",
+    "form": {
+      "contactLabel": "Contact for a precise estimate",
+      "submit": "Get the exact numbers",
+      "submitting": "Sending…",
+      "success": "Got it. We'll send an estimate for your audience within one business day.",
+      "error": "Didn't go through. Reach us directly — see the Contact section.",
+      "errorRateLimited": "Too many attempts in a row. Wait a minute and send it again.",
+      "errorContact": "Leave a contact so we can reach you"
+    }
+  },
   "marketCases": {
     "eyebrow": "Objects that built brands",
     "cases": [
       { "name": "Rhode", "text": "A year of organic audience warm-up before launch built pent-up demand — the brand now earns over $212M a year." },
       { "name": "Chamberlain Coffee", "text": "A personal habit turned into a full FMCG product, on shelves at major US retailers and earning $22M a year." },
       { "name": "Skims", "text": "Reinventing the shapewear market through size inclusivity and viral marketing — and, of course, a personal brand." }
+    ]
+  },
+  "cases": {
+    "_demo": "fabricated demo data, replace before publishing",
+    "eyebrow": "What we've already built",
+    "title": "not someone else's market —",
+    "titleAccent": "our launches",
+    "items": [
+      { "id": "vera-osenina", "num": "01", "name": "Vera Osenina", "text": "A slow-living lifestyle creator launched a board game, Nest — built for phone-free evenings together. The run sold out in three weeks." },
+      { "id": "dmitry-korshun", "num": "02", "name": "Dmitry Korshun", "text": "A travel creator turned his stories from the road into a limited-run fragrance, Azimuth. Every batch sold out before it even shipped." },
+      { "id": "milena-grace", "num": "03", "name": "Milena Grace", "text": "A food creator bottled her signature recipe as a hot sauce, Milena's Fire. The first batch sold out faster than the labels could be printed." }
+    ],
+    "labels": {
+      "audience": "Audience",
+      "units": "Units sold",
+      "leadTime": "Lead time",
+      "revenue": "Revenue"
+    },
+    "leadTimeWeeks": "{n, plural, one {# week} other {# weeks}}",
+    "compact": { "millions": "{v}M", "thousands": "{v}K", "plain": "{v}" },
+    "money": { "millions": "₽{v}M", "thousands": "₽{v}K", "plain": "₽{v}" }
+  },
+  "about": {
+    "_demo": "fabricated demo data, replace before publishing",
+    "eyebrow": "Who's behind LORE",
+    "titleLine": "not an agency —",
+    "titleAccent": "a team with factories",
+    "stats": {
+      "projects": "projects launched since 2019",
+      "units": "units produced",
+      "factories": "factory partners",
+      "years": "years in production"
+    },
+    "team": {
+      "body": "We've been at this since 2019. A founder and producer, a production technologist, and an art director carry every project from idea to shipment themselves — nothing gets handed off between departments. Runs are printed through factory partners we've worked with for years: not a one-off vendor, but a team that already knows how to make your category.",
+      "roles": ["Founder and producer", "Production technologist", "Art director"]
+    },
+    "fineprint": "Production is based out of Moscow."
+  },
+  "faq": {
+    "_demo": "fabricated demo data, replace before publishing",
+    "eyebrow": "Before you reach out",
+    "title": "questions",
+    "titleAccent": "you already have",
+    "items": [
+      { "id": "cost", "q": "How much does it cost, and when do I pay?", "a": "Depends on the model. With the percentage model, you pay nothing upfront — we fund production and launch, you earn a share of every sale. With pre-order, your audience pays before production starts. The exact percentage and terms go into the contract." },
+      { "id": "unsold", "q": "What happens if the product doesn't sell?", "a": "With pre-order, the run isn't printed until enough orders come in — you're never left holding unsold stock. In other models we work out the risk split and write it into the contract before launch." },
+      { "id": "moq", "q": "What's the minimum order quantity?", "a": "300 units for a core line, 100 for a limited capsule drop." },
+      { "id": "leadTime", "q": "How long from kickoff to first shipment?", "a": "5 to 9 weeks, based on our recent projects. It depends on how complex the product and its production are." },
+      { "id": "ownership", "q": "Who owns the brand and the design?", "a": "You do. We put that in the contract at the very start — LORE never holds rights to a product made under your name." },
+      { "id": "payout", "q": "How is my share calculated, and when do payouts happen?", "a": "The percentage and the payout schedule go into the contract before production starts — there's no default number, it's set per project." },
+      { "id": "returns", "q": "What about returns and defects?", "a": "Terms for defects and returns are spelled out in the contract before the run goes into production — so if something goes wrong, everyone already knows who does what." },
+      { "id": "sample", "q": "Can I get a sample before the full run?", "a": "Yes. Before the run goes to print, you get a physical sample and sign off on it yourself — production starts only after your go-ahead." },
+      { "id": "noIdea", "q": "What if I don't have a product idea?", "a": "You don't need to come with one. We look at your audience — who they are, what they care about, what they'd pay for — and suggest a product that fits your brand." },
+      { "id": "audience", "q": "How big does my audience need to be for this to make sense?", "a": "30,000 engaged followers, as a starting point. Past that, reach matters less than how much your audience trusts your picks." }
     ]
   },
   "contact": {

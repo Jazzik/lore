@@ -5,11 +5,17 @@ export const SLIDE_IDS = [
   "differentiation",
   "services",
   "production",
+  "quality",
   "journey",
+  "launch",
   "product-discovery",
   "benefits",
   "financial-model",
+  "calculator",
   "market-cases",
+  "cases",
+  "about",
+  "faq",
   "contact",
 ] as const;
 

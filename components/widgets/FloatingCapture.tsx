@@ -34,7 +34,15 @@ export function FloatingCapture() {
   }
 
   const contactSlideIndex = SLIDE_IDS.indexOf("contact");
-  const visible = activeSlide > 0 && activeSlide < contactSlideIndex && !dismissed;
+  const activeSlideId = SLIDE_IDS[activeSlide];
+  // Slides with their own lead-capture form must not also carry this widget —
+  // the two would overlap and compete for the same click.
+  const ownsLeadForm =
+    activeSlideId === "product-discovery" ||
+    activeSlideId === "calculator" ||
+    activeSlideId === "contact";
+  const visible =
+    activeSlide > 0 && activeSlide < contactSlideIndex && !ownsLeadForm && !dismissed;
 
   useEffect(() => {
     if (!visible) return;
@@ -52,12 +60,12 @@ export function FloatingCapture() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 25, scale: 0.97 }}
           transition={{ duration: 0.6, ease: [0.22, 0.7, 0.18, 1] }}
-          className="fixed bottom-6 right-6 z-40 w-[min(360px,calc(100vw-2rem))]"
+          className="fixed bottom-4 right-4 z-40 w-[min(360px,calc(100vw-2rem))] md:bottom-6 md:right-6"
           aria-label="Create your next product"
         >
-          <div className="relative rounded-sm border border-line bg-paper/95 p-6 pb-5 pl-24 shadow-2xl shadow-black/40 backdrop-blur-md">
+          <div className="relative rounded-sm border border-line bg-paper/95 p-4 shadow-2xl shadow-black/40 backdrop-blur-md md:p-6 md:pb-5 md:pl-24">
             <div
-              className="absolute -left-4 bottom-4 h-[110px] w-[110px]"
+              className="absolute -left-4 bottom-4 hidden h-[110px] w-[110px] md:block"
               style={{ animation: "floatObject 4.8s ease-in-out infinite" }}
               aria-hidden
             >
@@ -88,10 +96,10 @@ export function FloatingCapture() {
             >
               ✕
             </button>
-            <p className="mb-2 text-[8px] uppercase tracking-[0.18em] text-muted-ink">
+            <p className="mb-2 hidden text-[8px] uppercase tracking-[0.18em] text-muted-ink md:block">
               {t("eyebrow")}
             </p>
-            <h3 className="mb-4 font-serif text-xl leading-[0.95]">
+            <h3 className="mb-3 font-serif text-lg leading-[0.95] md:mb-4 md:text-xl">
               {titleLines.map((line) => (
                 <span key={line} className="block">
                   {line}
