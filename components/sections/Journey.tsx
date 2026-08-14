@@ -11,7 +11,10 @@ import { FLOATING_IMAGES } from "@/lib/floatingImages";
 // until dedicated production/unboxing footage is shot.
 const PRODUCTION_IMAGE = FLOATING_IMAGES[0];
 const BLOGGER_VIDEO = "/media/product-show-videos/Girl_showing_makeup_palette_202608130012.mp4";
-const UNBOXING_VIDEO = "https://static.higgsfield.ai/marketing/slides/unboxing-mini.mp4";
+// Не буквальная распаковка, но нужный бит: продукт, повёрнутый к камере в
+// момент, когда коробка раскрылась. Свой файл — последнего хотлинка на
+// чужой CDN в этой секции больше нет.
+const UNBOXING_VIDEO = "/media/product-show-videos/supplement-bottle.mp4";
 
 type Act = {
   num: string;
