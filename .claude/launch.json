@@ -4,8 +4,21 @@
     {
       "name": "lore-dev",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["dev"],
+      "runtimeArgs": [
+        "dev"
+      ],
       "port": 3000,
+      "autoPort": true
+    },
+    {
+      "name": "lore-prod",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "start",
+        "-p",
+        "3100"
+      ],
+      "port": 3100,
       "autoPort": true
     }
   ]
