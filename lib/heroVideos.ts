@@ -17,4 +17,6 @@ export const HERO_VIDEOS = [
   "/media/product-show-videos/coffee-bag.mp4",
   "/media/product-show-videos/blender.mp4",
   "/media/product-show-videos/skate-deck.mp4",
+  // В кадре читается вывеска Dior. Убрать — удалить эту строку.
+  "/media/product-show-videos/eyewear-street.mp4",
 ] as const;
